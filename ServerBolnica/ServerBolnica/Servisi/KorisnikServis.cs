@@ -69,6 +69,11 @@ namespace ServerBolnica.Servisi
 
                 Korisnik ulogovaniKorisnik = SesijaManager.Instance.VratiKorisnika(sesija);
 
+                if(ulogovaniKorisnik == null)
+                {
+                    return null;
+                }
+
                 KorisnikDTO korisnikDTO = new KorisnikDTO()
                 {
                     Ime = ulogovaniKorisnik.Ime,

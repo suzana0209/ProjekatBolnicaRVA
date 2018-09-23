@@ -37,6 +37,8 @@ namespace ServerBolnica.PristupBaziPodataka
             }
         }
 
+        
+
         public Korisnik GetUserByUsername(string korisnickoIme)
         {
             lock(bolnicaContext)

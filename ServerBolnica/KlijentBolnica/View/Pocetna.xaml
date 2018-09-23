@@ -1,0 +1,25 @@
+﻿<Window x:Class="KlijentBolnica.View.Pocetna"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KlijentBolnica.View"
+        mc:Ignorable="d"
+        Title="" Height="334" Width="638" ResizeMode="NoResize" WindowStyle="None" Background="White">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/slike/Naslovna.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <Button Name="OdjavaDugme" Content="Odjavite se" HorizontalAlignment="Left" Margin="542,16,0,0" VerticalAlignment="Top" Width="87" Height="34" Click="OdjavaDugme_Click"/>
+        <Button Name="IzmijeniPodatkeDugme" Content="{Binding ImePrezime}" HorizontalAlignment="Left" Margin="97,10,0,0" VerticalAlignment="Top" Width="118" Height="34" Click="IzmijeniPodatkeDugme_Click"/>
+        <Button Name="PocetnaStranaDugme" Content="Pocetna" HorizontalAlignment="Left" Margin="3,10,0,0" VerticalAlignment="Top" Width="87" Height="34" />
+        <Button Name="DodajKorisnikaDugme" Content="DodajKorisnika" HorizontalAlignment="Left" Margin="437,16,0,0" VerticalAlignment="Top" Width="87" Height="34" Click="DodajKorisnikaDugme_Click" Visibility="{Binding DugmeDodajKorisnikaVidljivo}"/>
+
+        <Rectangle HorizontalAlignment="Stretch" Fill="Gray" Height="1" Margin="-10,55,10,360"/>
+        <Button Name="PrikaziLjekareDugme" Content="Ljekari" HorizontalAlignment="Left" Margin="259,85,0,0" VerticalAlignment="Top" Width="105" Height="34" Click="PrikaziLjekareDugme_Click"/>
+        <Button Name="PrikaziPacijenteDugme" Content="Pacijenti" HorizontalAlignment="Left" Margin="524,85,0,0" VerticalAlignment="Top" Width="105" Height="34" Click="PrikaziPacijenteDugme_Click"/>
+        <Button x:Name="BolniceDugme" Content="Bolnice" HorizontalAlignment="Left" Margin="0,85,0,0" VerticalAlignment="Top" Width="105" Height="34" Click="BolniceDugme_Click"/>
+
+    </Grid>
+</Window>

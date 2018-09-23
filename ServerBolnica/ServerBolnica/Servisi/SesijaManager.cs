@@ -61,7 +61,33 @@ namespace ServerBolnica.Servisi
 
         public bool ProvjeraAutentifikacije(Sesija sesija)
         {
-            return sesije.ContainsKey(sesija.IdSesije);
+            if(sesija == null)
+            {
+                return false;
+            }
+            try
+            {
+                if (sesije.ContainsKey(sesija.IdSesije))
+                {
+                    return true;
+                }
+                else
+                {
+
+                    Izuzetak ex = new Izuzetak();
+                    ex.Poruka = "Ne postoji sesija!.";
+                    throw new FaultException<Izuzetak>(ex);
+                }
+            }
+            catch (FaultException<NullReferenceException> ex)
+            {
+                Console.WriteLine("Greska: " + ex.Detail);
+                return false;
+            }
+
+
+
+
         }
 
         public bool ProvjeriAdministratora(Sesija sesija)
@@ -76,20 +102,33 @@ namespace ServerBolnica.Servisi
 
         public Korisnik VratiKorisnika(Sesija sesija)
         {
+            if(sesija == null)
+            {
+                return null;
+            }
+
             SessionInstance sessionInstance = sesije[sesija.IdSesije];
             return DbManager.Instance.GetUserByUsername(sessionInstance.KorisnikSesije.KorisnickoIme);
         }
 
         public void AutentifikacijaIzuzetak(Sesija sesija)
         {
-            if(!ProvjeraAutentifikacije(sesija))
+            try
             {
-                log.Warn("Korisnik nije autentifikovan!");
-                Izuzetak ex = new Izuzetak();
-                ex.Poruka = "Korisnik nije autentifikovan!";
-                throw new FaultException<Izuzetak>(ex);
-                //throw new FaultException<Izuzetak>(new Izuzetak("Korisnik nije autentifikovan!"));
+                if (!ProvjeraAutentifikacije(sesija))
+                {
+                    log.Warn("Korisnik nije autentifikovan!");
+
+                    Izuzetak ex = new Izuzetak();
+                    ex.Poruka = "Korisnik nije autentifikovan!";
+                    throw new FaultException<Izuzetak>(ex);
+                    //throw new FaultException<Izuzetak>(new Izuzetak("Korisnik nije autentifikovan!"));
+                }
             }
+            catch (FaultException<Izuzetak> ex)
+            {
+                Console.WriteLine("Greska: " + ex.Detail.Poruka);
+            }          
         }
 
         public void AdministratorIzuzetak(Sesija sesija)
@@ -103,6 +142,22 @@ namespace ServerBolnica.Servisi
                 throw new FaultException<Izuzetak>(ex);
 
                 //throw new FaultException<Izuzetak>(new Izuzetak("Korisnik nije admin!"));
+            }
+        }
+
+        public bool PostojiUBazi(KorisnikZaLogovanje korisnik)
+        {
+            if (DbManager.Instance.GetUserByUsername(korisnik.KorisnickoIme) == null)
+                return false;
+            else
+            {
+                //Izuzetak ex = new Izuzetak();
+                //ex.Poruka = "Ne postoji.";
+                //throw new FaultException<Izuzetak>(ex);
+                return true;
+                
+
+
             }
         }
     }

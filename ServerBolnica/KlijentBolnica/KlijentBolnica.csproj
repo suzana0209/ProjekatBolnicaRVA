@@ -46,6 +46,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -64,6 +65,33 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Komande\KomandaOtkazi.cs" />
+    <Compile Include="KomunikacijaWCF\KomunikacijaWCF.cs" />
+    <Compile Include="KomunikacijaWCF\KreirajKomunikaciju.cs" />
+    <Compile Include="ProzorManager\IProzorManager.cs" />
+    <Compile Include="ProzorManager\ProzorManager.cs" />
+    <Compile Include="ProzorManager\ProzorManagingVM.cs" />
+    <Compile Include="ProzorManager\StanjeProzora.cs" />
+    <Compile Include="RellayCommand\RelayCommand.cs" />
+    <Compile Include="ViewModel\DodajKorisnikaVM.cs" />
+    <Compile Include="ViewModel\IzmijeniPodatkeKorisnikuVM.cs" />
+    <Compile Include="ViewModel\LogovanjeVM.cs" />
+    <Compile Include="ViewModel\LogVM.cs" />
+    <Compile Include="View\DodajKorisnika.xaml.cs">
+      <DependentUpon>DodajKorisnika.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IzmijeniPodatkeKorisniku.xaml.cs">
+      <DependentUpon>IzmijeniPodatkeKorisniku.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Logovanje.xaml.cs">
+      <DependentUpon>Logovanje.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NevalidanUnos.xaml.cs">
+      <DependentUpon>NevalidanUnos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pocetna.xaml.cs">
+      <DependentUpon>Pocetna.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -76,6 +104,26 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\DodajKorisnika.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IzmijeniPodatkeKorisniku.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Logovanje.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NevalidanUnos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pocetna.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -95,6 +143,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="log4.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -103,6 +152,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{A09DFD36-E2FC-4185-A9DB-62DD9AB42A57}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="slike\Naslovna.jpg" />
+    <Resource Include="slike\Redo.jpg" />
+    <Resource Include="slike\Undo.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,6 +11,8 @@ namespace Common.Interfejsi
         [FaultContract(typeof(Izuzetak))]
         KorisnikDTO VratiInfoKorisnika(Sesija sesija);
 
+        
+
         [OperationContract]
         [FaultContract(typeof(Izuzetak))]
         void IzmijeniInfoKorisnika(Sesija sesija, KorisnikDTO korisnik);

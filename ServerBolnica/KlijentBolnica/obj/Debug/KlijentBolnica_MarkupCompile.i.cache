@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\suzana\Desktop\NoviProjekat\ServerBolnica\KlijentBolnica\obj\Debug\
+C:\Users\suzana\Desktop\ProjekatBolnicaRVA\ServerBolnica\KlijentBolnica\obj\Debug\
 KlijentBolnica
 none
 false
 DEBUG;TRACE
-C:\Users\suzana\Desktop\NoviProjekat\ServerBolnica\KlijentBolnica\App.xaml
-11151548125
+C:\Users\suzana\Desktop\ProjekatBolnicaRVA\ServerBolnica\KlijentBolnica\App.xaml
+6-1340208858
 
-9-1755879439
-171548780660
-MainWindow.xaml;
+26412457126
+19-1586751270
+MainWindow.xaml;View\DodajKorisnika.xaml;View\IzmijeniPodatkeKorisniku.xaml;View\Logovanje.xaml;View\NevalidanUnos.xaml;View\Pocetna.xaml;
 
 True
 
