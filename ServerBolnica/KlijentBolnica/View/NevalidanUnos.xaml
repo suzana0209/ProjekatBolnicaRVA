@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KlijentBolnica.View"
         mc:Ignorable="d"
-        Title="GRESKA" Height="136.356" Width="216.871" ResizeMode="NoResize" WindowStyle="None" BorderBrush="Black">
+        Title="GRESKA" Height="136.356" Width="216.871" ResizeMode="NoResize" WindowStyle="None" BorderBrush="Black" Background="Red">
     <Grid>
         <Label Content="Unesite validne podatke!" FontSize="12" HorizontalAlignment="Stretch" Margin="29,28,35,0" VerticalAlignment="Top" Height="29"/>
         <Button  Name="NazadDugme" Content="OK" HorizontalAlignment="Left" Margin="63,81,0,0" VerticalAlignment="Top" Width="90" Height="28" Click="NazadDugme_Click" RenderTransformOrigin="-0.085,0.096"/>

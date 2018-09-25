@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KlijentBolnica.View"
         mc:Ignorable="d"
-        Title="" Height="375" Width="588.953" ResizeMode="NoResize" WindowStyle="None">
+        Title="" Height="375" Width="663.953" ResizeMode="NoResize" WindowStyle="None">
     <Grid>
         <Label Content="LISTA LJEKARA" FontSize="30" HorizontalAlignment="Left" Margin="223,36,0,0" VerticalAlignment="Top"/>
 
@@ -18,14 +18,15 @@
 
 
         <DataGrid x:Name="dataGrid" Margin="148,114,0,0" ItemsSource="{Binding listaLjekara}" AutoGenerateColumns="false" Height="227" 
-                  VerticalAlignment="Top" HorizontalAlignment="Left" Width="440" IsReadOnly="True" SelectedItem="{Binding selektovanLjekar}">
+                  VerticalAlignment="Top" HorizontalAlignment="Left" Width="516" IsReadOnly="True" SelectedItem="{Binding selektovanLjekar}">
             <DataGrid.Columns>
                 <!--<DataGridTextColumn Binding="{Binding Path=Id}" Header="Id ljekara" />-->
+                <DataGridTextColumn Binding="{Binding Path=IdLjekara}" Header="ID" Width="0.5*"/>
                 <DataGridTextColumn Binding="{Binding Path=Ime}" Header="Ime" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Path=Prezime}" Header="Prezime" Width="*" />
-                <DataGridTextColumn Binding="{Binding Path=Specijalizacija}" Header="Specijalizacija" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Specijalizacija}" Header="Specijalizacija" Width="1.5*"/>
                 <DataGridTextColumn Binding="{Binding Path=Titula}" Header="Titula" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Odjeljenje}" Header="Odjeljenje" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Odjeljenje}" Header="Odjeljenje" Width="1.5*"/>
             </DataGrid.Columns>
         </DataGrid>
 

@@ -26,6 +26,7 @@ namespace KlijentBolnica.View
         {
             object justToInit = LogVM.Instance;
 
+            //LozinkaTextBox.u
             InitializeComponent();
             IProzorManager windowManager = new ProzorManager(this);
 

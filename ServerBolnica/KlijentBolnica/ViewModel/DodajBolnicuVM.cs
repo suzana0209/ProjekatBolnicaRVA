@@ -181,14 +181,13 @@ namespace KlijentBolnica.ViewModel
 
             if (!uspjesnoIzmijenjen)
             {
-                //MessageBoxResult dialogResult = MessageBox.Show("Bill on server has been changed by other user in mean time. Do you want to overwrite changes on server?",
-                //               "Overwrite changes", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                //MessageBoxResult dialogResult = MessageBox.Show("Bolnica je vec izmijenjena od strane drugog korisnika. Da li zelite pregaziti tudje izmjene", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
                 //switch (dialogResult)
                 //{
                 //    case MessageBoxResult.Yes:
-                //        log.Warn("Overwriting bill on server");
-                izmijeniBolnicuDTO.Azurirano = true;
-                uspjesnoIzmijenjen = KreirajKomunikaciju.Komunikacija.IzmijeniBolnicu(izmijeniBolnicuDTO);
+                //        log.Warn("Pregazi tudje izmjene");
+                //        izmijeniBolnicuDTO.Azurirano = true;
+                //        uspjesnoIzmijenjen = KreirajKomunikaciju.Komunikacija.IzmijeniBolnicu(izmijeniBolnicuDTO);
                 //        break;
                 //    case MessageBoxResult.Cancel:
                 //        return;

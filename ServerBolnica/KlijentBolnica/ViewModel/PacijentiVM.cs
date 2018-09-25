@@ -8,6 +8,7 @@ using Microsoft.CSharp.RuntimeBinder;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 using System.Windows.Input;
 
 namespace KlijentBolnica.ViewModel
@@ -106,7 +107,9 @@ namespace KlijentBolnica.ViewModel
 
         public bool ValidacijaPodataka(DodajPacijentaVM pacijent)
         {
-            if(!(pacijent.Ime is string) || !(pacijent.Prezime is string))
+            Regex r = new Regex("^[a-zA-Z]*$");
+            
+            if (!r.IsMatch(pacijent.Ime) || !r.IsMatch(pacijent.Prezime))
             {
                 return false;
             }

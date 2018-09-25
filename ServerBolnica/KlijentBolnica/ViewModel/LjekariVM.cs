@@ -6,6 +6,7 @@ using KlijentBolnica.View;
 using KlijentBolnica.WindowManager;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 using System.Windows.Input;
 
 namespace KlijentBolnica.ViewModel
@@ -42,7 +43,7 @@ namespace KlijentBolnica.ViewModel
             DodajLjekara dodajLjekara = new DodajLjekara(dodajLjekaraVM);
             dodajLjekara.ShowDialog();
 
-            if(dodajLjekaraVM.Sacuvano && ValidacijaPodataka(dodajLjekaraVM))
+            if(dodajLjekaraVM.Sacuvano && ValidacijaPodataka(dodajLjekaraVM.Ime, dodajLjekaraVM.Prezime))
             {
                 ljekar.Ime = dodajLjekaraVM.Ime;
                 ljekar.Prezime = dodajLjekaraVM.Prezime;
@@ -53,6 +54,11 @@ namespace KlijentBolnica.ViewModel
                 ljekar.IdLjekara = KreirajKomunikaciju.Komunikacija.DodajLjekara(ljekar);
 
                 return ljekar;
+            }
+            else
+            {
+                NevalidanUnos nevalidanUnos = new NevalidanUnos();
+                nevalidanUnos.ShowDialog();
             }
 
             return null;           
@@ -84,14 +90,14 @@ namespace KlijentBolnica.ViewModel
             listaLjekara.Remove(selektovanLjekar);
         }
 
-        public bool ValidacijaPodataka(DodajLjekaraVM ljekar)
+        public bool ValidacijaPodataka(string ime, string prezime)
         {
-            if (!(ljekar.Ime is string) || !(ljekar.Prezime is string))
+            Regex r = new Regex("^[a-zA-Z]*$");
+            if (r.IsMatch(ime) && r.IsMatch(prezime))
             {
-                return false;
+                return true;
             }
-
-            return true;
+            return false;
         }
     }
 }
