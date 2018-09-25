@@ -24,9 +24,9 @@ namespace Common.Model
         [DataMember]
         public int Verzija { get; set; }
         [DataMember]
-        public List<Ljekar> LjekariUBolnici { get; set; }
+        public  List<Ljekar> LjekariUBolnici { get; set; }
         [DataMember]
-        public List<Pacijent> PacijentiUBolnici { get; set; }
+        public  List<Pacijent> PacijentiUBolnici { get; set; }
 
         public Bolnica KlonirajBolnicu()
         {

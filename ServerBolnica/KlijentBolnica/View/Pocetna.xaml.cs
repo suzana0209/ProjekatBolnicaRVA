@@ -1,7 +1,9 @@
-﻿using Common.Enumeracije;
+﻿using Common.Dodatno;
+using Common.Enumeracije;
 using Common.ObjektiDTO;
 using KlijentBolnica.KomunikacijaWCF;
 using KlijentBolnica.WindowManager;
+using System.ServiceModel;
 using System.Windows;
 
 namespace KlijentBolnica.View
@@ -19,13 +21,16 @@ namespace KlijentBolnica.View
 
         public Pocetna(IProzorManager prozorManager)
         {
-            ProzorManager = prozorManager;
-            JaSamAdmin();
             KorisnikDTO korisnikDTO = TrenutnoUlogovan();
+            ProzorManager = prozorManager;
+            if (JaSamAdmin() && korisnikDTO != null)
+            {
+                
 
-            ImePrezime = korisnikDTO.Ime + " " + korisnikDTO.Prezime;
-            InitializeComponent();
-            DataContext = this;
+                ImePrezime = korisnikDTO.Ime + " " + korisnikDTO.Prezime;
+                InitializeComponent();
+                DataContext = this;
+            }
         }
 
         private void DodajKorisnikaDugme_Click(object sender, RoutedEventArgs e)
@@ -60,16 +65,17 @@ namespace KlijentBolnica.View
             ProzorManager.PrikaziStranu(StanjeProzora.Pacijenti);
         }
 
-        private void JaSamAdmin()
+        private bool JaSamAdmin()
         {
             //if(KreirajKomunikaciju.Komunikacija.VratiInfoKorisnika() == null)
             //{
             //    return;
             //}
 
+            if (KreirajKomunikaciju.Komunikacija.VratiInfoKorisnika() == null)
+                return false;
             
-
-            if (KreirajKomunikaciju.Komunikacija.VratiInfoKorisnika().Tip == TipKorisnika.Admin)
+            if ( KreirajKomunikaciju.Komunikacija.VratiInfoKorisnika().Tip == TipKorisnika.Admin)
             {
                 DugmeDodajKorisnikaVidljivo = Visibility.Visible;
             }
@@ -77,12 +83,18 @@ namespace KlijentBolnica.View
             {
                 DugmeDodajKorisnikaVidljivo = Visibility.Hidden;
             }
-            
+            return true;
         }
 
         private KorisnikDTO TrenutnoUlogovan()
         {
             return KreirajKomunikaciju.Komunikacija.VratiInfoKorisnika();
+        }
+
+        private void LogoviDugme_Click(object sender, RoutedEventArgs e)
+        {
+            Logger logger = new Logger();
+            logger.ShowDialog();
         }
     }
 }

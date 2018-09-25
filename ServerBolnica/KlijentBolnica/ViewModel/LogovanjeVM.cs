@@ -58,8 +58,7 @@ namespace KlijentBolnica.ViewModel
         public void Execute(object parameter)
         {
             try
-            {
-                
+            {              
                 if(KreirajKomunikaciju.Komunikacija.KorisnikPostojiUBP(KorisnikZaLog))
                 {
                     KreirajKomunikaciju.Komunikacija.PrijaviSe(KorisnikZaLog);

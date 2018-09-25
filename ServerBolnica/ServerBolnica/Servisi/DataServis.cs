@@ -73,6 +73,7 @@ namespace ServerBolnica.Servisi
                 {
                     izmijenjenaBolnica.Vrsta = bolnicaIzmijeniDTO.NovaVrstaBol;
                 }
+
                 if (bolnicaIzmijeniDTO.NovaListaLjekara != null)
                 {
                     if (izmijenjenaBolnica.LjekariUBolnici != null)
@@ -112,6 +113,9 @@ namespace ServerBolnica.Servisi
 
                         izmijenjenaBolnica.PacijentiUBolnici.Add(pacijent);
                         DbManager.Instance.DodajPacijentaUBolnicu(izmijenjenaBolnica.IdBolnice, pacijent);
+
+                        Bolnica b = DbManager.Instance.VratiBolnicu(izmijenjenaBolnica.IdBolnice);
+
                     }
                 }
 
@@ -119,40 +123,12 @@ namespace ServerBolnica.Servisi
                 DbManager.Instance.SacuvajPromjene();
                 log.Info("Bolnica sa id-em " + izmijenjenaBolnica.IdBolnice + " je izmijenjena");
                 return true;
-
-
             }
             catch (FaultException<Izuzetak> ex)
             {
                 Console.WriteLine("Greska: " + ex.Detail.Poruka);
                 return false;
             }  
-
-            #region Komentar
-            //if(bolnicaIzmijeniDTO.NovaListaLjekara != null)
-            //{
-            //    if(izmijenjenaBolnica.LjekariUBolnici != null)
-            //    {
-            //        DbManager.Instance.ObrisiLjekaraIzBolnice(izmijenjenaBolnica.IdBolnice);
-            //    }
-            //    foreach (var item in bolnicaIzmijeniDTO.NovaListaLjekara)
-            //    {
-            //        item.IdLjekara = izmijenjenaBolnica.IdBolnice;
-
-            //    }
-            //        Ljekar ljekar = new Ljekar()
-            //        {
-            //            Ime = item.Ime,
-            //            Odjeljenje = item.Odjeljenje,
-            //            Prezime = item.Prezime,
-            //            Specijalizacija = item.Specijalizacija,
-            //            Titula = item.Titula
-            //        };
-            //        izmijenjenaBolnica.LjekariUBolnici.Add(ljekar);
-            //        Ljekar dodat = DbManager.Instance.DodajLjekara(ljekar);
-            //    }
-            //}
-            #endregion
         }
 
         public Bolnica KreirajBolnicu(Sesija sesija, BolnicaKreirajDTO bolnicaDTO)
@@ -264,16 +240,30 @@ namespace ServerBolnica.Servisi
             {
                 SesijaManager.Instance.AutentifikacijaIzuzetak(sesija);
                 Pacijent pacijentPostoji = DbManager.Instance.VratiPacijentaPrekoId(pacijent.IdPacijenta);
+
                 if (pacijentPostoji == null)
                 {
-                    pacijentPostoji = DbManager.Instance.DodajPacijenta(pacijent);
+                    Pacijent p = DbManager.Instance.VratiPacijentaPrekoJmbg(pacijent.Jmbg);
+                    if (p == null)
+                    {
+                        pacijentPostoji = DbManager.Instance.DodajPacijenta(pacijent);
+                    }
+                    else
+                        return -1;
                 }
                 else
                 {
-                    pacijentPostoji.Ime = pacijent.Ime;
-                    pacijentPostoji.Prezime = pacijent.Prezime;
-                    pacijentPostoji.Jmbg = pacijent.Jmbg;
-                    DbManager.Instance.SacuvajPromjene();
+                    Pacijent pom = DbManager.Instance.VratiPacijentaPrekoJmbg(pacijent.Jmbg);
+
+                    if (pom == null)
+                    {
+                        pacijentPostoji.Ime = pacijent.Ime;
+                        pacijentPostoji.Prezime = pacijent.Prezime;
+                        pacijentPostoji.Jmbg = pacijent.Jmbg;
+                        DbManager.Instance.SacuvajPromjene();
+                    }
+                    else
+                        return -1;                   
                 }
 
                 log.Info("Pacijent sa id-em" + pacijentPostoji.IdPacijenta + " je sacuvan!");
@@ -281,6 +271,11 @@ namespace ServerBolnica.Servisi
                 return pacijentPostoji.IdPacijenta;
             }
             catch (FaultException<Izuzetak> ex)
+            {
+                Console.WriteLine("Greska: " + ex.Detail.Poruka);
+                return -1;
+            }
+            catch (FaultException<VecPostojiIzuzetak> ex)
             {
                 Console.WriteLine("Greska: " + ex.Detail.Poruka);
                 return -1;

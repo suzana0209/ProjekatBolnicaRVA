@@ -61,20 +61,20 @@ namespace ServerBolnica
             {
                 Ime = "Marko",
                 Prezime = "Markovic",
-                Jmbg = "1234567891234".ToCharArray()
+                Jmbg = "1234567891234"
             };
 
             Pacijent pacijent2 = new Pacijent()
             {
                 Ime = "Jovan",
                 Prezime = "Jovanovic",
-                Jmbg = "1234567891234".ToCharArray()
+                Jmbg = "1234567891234"
             };
             Pacijent pacijent3 = new Pacijent()
             {
                 Ime = "Petar",
                 Prezime = "Petrovic",
-                Jmbg = "1234567891234".ToCharArray()
+                Jmbg = "1234567891234"
             };
 
             pacijent1 = DbManager.Instance.DodajPacijenta(pacijent1);

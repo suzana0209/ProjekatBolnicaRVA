@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="" Height="334" Width="638" ResizeMode="NoResize" WindowStyle="None" Background="White">
     <Grid>
-        <Grid.Background>
+        <!--<Grid.Background>
             <ImageBrush ImageSource="/slike/Naslovna.jpg" Stretch="UniformToFill"/>
-        </Grid.Background>
+        </Grid.Background>-->
 
         <Button Name="OdjavaDugme" Content="Odjavite se" HorizontalAlignment="Left" Margin="542,16,0,0" VerticalAlignment="Top" Width="87" Height="34" Click="OdjavaDugme_Click"/>
         <Button Name="IzmijeniPodatkeDugme" Content="{Binding ImePrezime}" HorizontalAlignment="Left" Margin="97,10,0,0" VerticalAlignment="Top" Width="118" Height="34" Click="IzmijeniPodatkeDugme_Click"/>
@@ -20,6 +20,8 @@
         <Button Name="PrikaziLjekareDugme" Content="Ljekari" HorizontalAlignment="Left" Margin="259,85,0,0" VerticalAlignment="Top" Width="105" Height="34" Click="PrikaziLjekareDugme_Click"/>
         <Button Name="PrikaziPacijenteDugme" Content="Pacijenti" HorizontalAlignment="Left" Margin="524,85,0,0" VerticalAlignment="Top" Width="105" Height="34" Click="PrikaziPacijenteDugme_Click"/>
         <Button x:Name="BolniceDugme" Content="Bolnice" HorizontalAlignment="Left" Margin="0,85,0,0" VerticalAlignment="Top" Width="105" Height="34" Click="BolniceDugme_Click"/>
+
+        <Button x:Name="LogoviDugme" Content="Logovi" HorizontalAlignment="Left" Margin="15,189,0,0" VerticalAlignment="Top" Width="75" Click="LogoviDugme_Click"/>
 
     </Grid>
 </Window>

@@ -29,17 +29,19 @@ namespace KlijentBolnica.WindowManager
                 case StanjeProzora.IzmijeniPodatkeKorisniku:
                     PrikaziSledecuStranu(new IzmijeniPodatkeKorisniku(this));
                     break;
+
+                case StanjeProzora.Bolnice:
+                    PrikaziSledecuStranu(new Bolnice(this));
+                    break;
+
+                case StanjeProzora.Ljekari:
+                    PrikaziSledecuStranu(new Ljekari(this));
+                    break;
+                case StanjeProzora.Pacijenti:
+                    PrikaziSledecuStranu(new Pacijenti(this));
+                    break;
+                
             }
-            //case StanjeProzora.Bolnice:
-            //    PrikaziSledecuStranu(new Bolnice(this));
-            //    break;
-            //case StanjeProzora.Ljekari:
-            //    PrikaziSledecuStranu(new Ljekari(this));
-            //    break;
-            //case StanjeProzora.Pacijenti:
-            //    PrikaziSledecuStranu(new Pacijenti(this));
-            //    break;         
-            //}   
         }
 
         private void PrikaziSledecuStranu(Window sledecaStrana)

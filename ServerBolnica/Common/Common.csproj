@@ -56,6 +56,7 @@
     <Compile Include="Dodatno\Korisnik.cs" />
     <Compile Include="Dodatno\KorisnikZaLogovanje.cs" />
     <Compile Include="Dodatno\Sesija.cs" />
+    <Compile Include="Dodatno\VecPostojiIzuzetak.cs" />
     <Compile Include="Enumeracije\Odjeljenje.cs" />
     <Compile Include="Enumeracije\Specijalizacija.cs" />
     <Compile Include="Enumeracije\TipKorisnika.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="ObjektiDTO\BolnicaIzmijeniDTO.cs" />
     <Compile Include="ObjektiDTO\BolnicaKreirajDTO.cs" />
     <Compile Include="ObjektiDTO\KorisnikDTO.cs" />
+    <Compile Include="ObjektiDTO\PomocniPacijent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

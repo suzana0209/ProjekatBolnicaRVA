@@ -42,18 +42,20 @@ namespace ServerBolnica.Servisi
             Korisnik logovaniKorisnik = DbManager.Instance.GetUserByUsername(korisnik.KorisnickoIme);
             try
             {              
-                if (logovaniKorisnik != null && logovaniKorisnik.Lozinka == korisnik.Lozinka)
-                {
-                    log.Info("Korsnik uspjesno ulogovan: " + logovaniKorisnik.KorisnickoIme);
-                    return SesijaManager.Instance.NapraviNovuSesiju(logovaniKorisnik);
-                    //throw new NotImplementedException();
-                }
-                else
+                if (logovaniKorisnik == null || logovaniKorisnik.Lozinka != korisnik.Lozinka)
                 {
                     Izuzetak ex = new Izuzetak();
                     ex.Poruka = "Pogresno korisnicko ime i/ili lozinka.";
                     Console.WriteLine("Greska: " + ex.Poruka);
                     return null;
+
+                    //NotImplementedException();
+                }
+                else
+                {
+                    log.Info("Korsnik uspjesno ulogovan: " + logovaniKorisnik.KorisnickoIme);
+                    return SesijaManager.Instance.NapraviNovuSesiju(logovaniKorisnik);
+
                 }
             }
             catch (FaultException<Izuzetak> ex)

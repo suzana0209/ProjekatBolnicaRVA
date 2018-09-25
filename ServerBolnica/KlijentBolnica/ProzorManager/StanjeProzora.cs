@@ -13,6 +13,7 @@ namespace KlijentBolnica.WindowManager
         IzmijeniPodatkeKorisniku,
         Bolnice,
         Ljekari,
-        Pacijenti
+        Pacijenti,
+        Logger
     }
 }

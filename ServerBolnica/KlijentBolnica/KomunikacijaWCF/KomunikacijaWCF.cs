@@ -40,8 +40,18 @@ namespace KlijentBolnica.KomunikacijaWCF
 
         public void PrijaviSe(KorisnikZaLogovanje korisnik)
         {
-            sesija = logovanjeServisProxy.PrijaviSe(korisnik);
-            log.Info("Prijava uspjesno izvrsena!");
+            try
+            {
+                sesija = logovanjeServisProxy.PrijaviSe(korisnik);
+                log.Info("Prijava uspjesno izvrsena!");
+            }
+            catch (FaultException<Izuzetak> ex)
+            {
+                Console.WriteLine("Greska: " + ex.Detail.Poruka);
+                
+            }
+
+
         }
 
         public void OdjaviSe()
@@ -86,7 +96,11 @@ namespace KlijentBolnica.KomunikacijaWCF
         public int DodajPacijenta(Pacijent pacijent)
         {
             log.Info("Dodavanje pacijenta sa id-em: " + pacijent.IdPacijenta);
-            return dataServisProxy.DodajPacijenta(sesija, pacijent);
+            if(dataServisProxy.DodajPacijenta(sesija, pacijent) != -1)
+            {
+                return dataServisProxy.DodajPacijenta(sesija, pacijent);
+            }
+            return -1;
         }
 
         public int DodajLjekara(Ljekar ljekar)
@@ -153,7 +167,7 @@ namespace KlijentBolnica.KomunikacijaWCF
         {
             log.Info("Kloniranje bolnice sa id-em" + idBolnice);
             return dataServisProxy.DuplirajBolnicu(sesija, idBolnice);
-        }
+        }       
 
     }
 }

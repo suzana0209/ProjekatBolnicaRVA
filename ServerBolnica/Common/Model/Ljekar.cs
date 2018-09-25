@@ -28,7 +28,7 @@ namespace Common.Model
         [DataMember]
         public Titula Titula { get; set; }
         [DataMember]
-        public List<Bolnica> BolnicaRadiLjekar { get; set; }
+        public  List<Bolnica> BolnicaRadiLjekar { get; set; }
       
         public Ljekar()
         {
@@ -57,7 +57,13 @@ namespace Common.Model
                 Specijalizacija = Specijalizacija,
                 Titula = Titula
             };
-            
+
+            //kopija.BolnicaRadiLjekar = new List<Bolnica>(BolnicaRadiLjekar.Count);
+            //foreach (var item in BolnicaRadiLjekar)
+            //{
+            //    kopija.BolnicaRadiLjekar.Add(item.KlonirajBolnicu());
+            //}
+
             return kopija;
         }
     }

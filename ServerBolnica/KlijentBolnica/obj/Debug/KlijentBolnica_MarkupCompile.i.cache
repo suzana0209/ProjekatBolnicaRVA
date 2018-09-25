@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\suzana\Desktop\ProjekatBolnicaRVA\ServerBolnica\KlijentBolnica\App.xaml
-6-1340208858
+13-348582992
 
-26412457126
+451367246121
 19-1586751270
-MainWindow.xaml;View\DodajKorisnika.xaml;View\IzmijeniPodatkeKorisniku.xaml;View\Logovanje.xaml;View\NevalidanUnos.xaml;View\Pocetna.xaml;
+MainWindow.xaml;View\Bolnice.xaml;View\DodajBolnicu.xaml;View\DodajKorisnika.xaml;View\DodajLjekara.xaml;View\DodajPacijenta.xaml;View\IzmijeniPodatkeKorisniku.xaml;View\Ljekari.xaml;View\Logger.xaml;View\Logovanje.xaml;View\NevalidanUnos.xaml;View\Pacijenti.xaml;View\Pocetna.xaml;
 
 True
 

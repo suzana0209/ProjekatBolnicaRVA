@@ -147,7 +147,7 @@ namespace ServerBolnica.Servisi
 
         public bool PostojiUBazi(KorisnikZaLogovanje korisnik)
         {
-            if (DbManager.Instance.GetUserByUsername(korisnik.KorisnickoIme) == null)
+            if (DbManager.Instance.ProvjeriLozinkaIspravna(korisnik) == null)
                 return false;
             else
             {

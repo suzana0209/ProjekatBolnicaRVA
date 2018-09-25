@@ -11,6 +11,7 @@ namespace ServerBolnica.PristupBaziPodataka
         private static DbManager instance = null;
 
         public BolnicaContext bolnicaContext = null;
+        
 
         private DbManager()
         {
@@ -43,7 +44,16 @@ namespace ServerBolnica.PristupBaziPodataka
         {
             lock(bolnicaContext)
             {
-                return bolnicaContext.Korisnici.FirstOrDefault(u => u.KorisnickoIme == korisnickoIme);
+                return bolnicaContext.Korisnici.FirstOrDefault(k => k.KorisnickoIme == korisnickoIme);
+            }
+        }
+
+        public Korisnik ProvjeriLozinkaIspravna(KorisnikZaLogovanje korisnik)
+        {
+            lock(bolnicaContext)
+            {
+                return bolnicaContext.Korisnici.FirstOrDefault(k => k.KorisnickoIme == korisnik.KorisnickoIme && 
+                                                                k.Lozinka == korisnik.Lozinka);
             }
         }
 
@@ -95,10 +105,11 @@ namespace ServerBolnica.PristupBaziPodataka
         public Ljekar DodajLjekara(Ljekar ljekar)
         {
             Ljekar povratnaVrijednost = null;
+
             lock(bolnicaContext)
-            {
+            {              
                 povratnaVrijednost = bolnicaContext.Ljekari.Add(ljekar);
-                bolnicaContext.SaveChanges();
+                bolnicaContext.SaveChanges();              
             }
             return povratnaVrijednost;
         }
@@ -138,6 +149,26 @@ namespace ServerBolnica.PristupBaziPodataka
             lock(bolnicaContext)
             {
                 return bolnicaContext.Pacijenti.Find(idPacijenta);
+            }
+        }
+
+        public Pacijent VratiPacijentaPrekoJmbg(string jmbg)
+        {
+            //bool nadjen = false;
+            Pacijent p = null;
+            List<Pacijent> pacijenti = VratiSvePacijente().ToList();
+            lock(bolnicaContext)
+            {
+                foreach (var item in pacijenti)
+                {
+                    if(item.Jmbg == jmbg)
+                    {
+                        //nadjen = true;
+                        p = item;
+                        break;
+                    }
+                }
+                return p;
             }
         }
 
@@ -187,11 +218,24 @@ namespace ServerBolnica.PristupBaziPodataka
 
         public void DodajPacijentaUBolnicu(int idBolnice, Pacijent pacijent)
         {
+            
             lock(bolnicaContext)
             {
+                bool nadjen = false;
                 Bolnica bolnica = bolnicaContext.Bolnice.Find(idBolnice);
-                bolnica.PacijentiUBolnici.Add(pacijent);
-                bolnicaContext.SaveChanges();
+                foreach (var item in bolnica.PacijentiUBolnici)
+                {
+                    if(item.Equals(pacijent))
+                    {
+                        nadjen = true;
+                        break;
+                    }
+                }
+                if(!nadjen)
+                {
+                    bolnica.PacijentiUBolnici.Add(pacijent);
+                    bolnicaContext.SaveChanges();
+                }
             }
         }
 
@@ -199,9 +243,22 @@ namespace ServerBolnica.PristupBaziPodataka
         {
             lock(bolnicaContext)
             {
+                bool nadjen = false;
+
                 Bolnica bolnica = bolnicaContext.Bolnice.Find(idBolnice);
-                bolnica.LjekariUBolnici.Add(ljekar);
-                bolnicaContext.SaveChanges();
+                foreach (var item in bolnica.LjekariUBolnici)
+                {
+                    if(item.Equals(ljekar))
+                    {
+                        nadjen = true;
+                        break;
+                    }
+                }
+                if(!nadjen)
+                {
+                    bolnica.LjekariUBolnici.Add(ljekar);
+                    bolnicaContext.SaveChanges();
+                }               
             }
         }
 
@@ -230,6 +287,11 @@ namespace ServerBolnica.PristupBaziPodataka
             lock(bolnicaContext)
             {
                 Bolnica bolnica = bolnicaContext.Bolnice.Find(idBolnice);
+
+                ObrisiLjekaraIzBolnice(idBolnice);
+                ObrisiPacijentaIzBolnice(idBolnice);
+                SacuvajPromjene();
+
                 bolnicaContext.Bolnice.Remove(bolnica);
                 bolnicaContext.SaveChanges();
             }
@@ -242,5 +304,7 @@ namespace ServerBolnica.PristupBaziPodataka
                 return bolnicaContext.Bolnice.Find(idBolnice);
             }
         }
+
+       
     }
 }
