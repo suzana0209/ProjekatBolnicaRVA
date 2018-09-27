@@ -17,7 +17,7 @@ namespace KlijentBolnica.ViewModel
         public string Jmbg { get; set; }
 
         public bool Sacuvano { get; set; }
-        public ICommand DodajPacijentaKomanda { get; set; }
+        public ICommand DodavanjePacijentaKomanda { get; set; }
         public ICommand OtkaziKomanda { get; set; }
 
         public Window Roditelj { get; set; }
@@ -26,7 +26,7 @@ namespace KlijentBolnica.ViewModel
         {
             Sacuvano = false;
             OtkaziKomanda = new RelayCommand(ZatvoriProzor);
-            DodajPacijentaKomanda = new RelayCommand(PacijentDodat, ValidacijaPacijenta);
+            DodavanjePacijentaKomanda = new RelayCommand(PacijentDodat, ValidacijaPacijenta);
         }
 
         public DodajPacijentaVM(string ime, string prezime, string jmbg) : this()
@@ -54,9 +54,6 @@ namespace KlijentBolnica.ViewModel
             Roditelj.Close();
         }
 
-        public void VecPostojiPacijent(string jmbg)
-        {
-            //if(KreirajKomunikaciju.Komunikacija.)
-        }
+       
     }
 }

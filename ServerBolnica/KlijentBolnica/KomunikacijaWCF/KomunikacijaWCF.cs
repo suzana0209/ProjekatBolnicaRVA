@@ -154,13 +154,15 @@ namespace KlijentBolnica.KomunikacijaWCF
         public Bolnica KreirajBolnicu(BolnicaKreirajDTO bolnica)
         {
             log.Info("Kreiranje bolnice" );
-            return dataServisProxy.KreirajBolnicu(sesija, bolnica);
+            Bolnica b = dataServisProxy.KreirajBolnicu(sesija, bolnica);
+            return b;
         }
 
         public bool IzmijeniBolnicu(BolnicaIzmijeniDTO bolnicaDTO)
         {
             log.Info("Podaci o bolnici su izmijenjeni");
-            return dataServisProxy.IzmijeniBolnicu(sesija, bolnicaDTO);
+            bool uspjesno = dataServisProxy.IzmijeniBolnicu(sesija, bolnicaDTO);
+            return uspjesno;
         }
 
         public Bolnica DuplirajBolnicu(int idBolnice)

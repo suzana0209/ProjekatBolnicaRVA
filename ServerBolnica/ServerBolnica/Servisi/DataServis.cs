@@ -92,7 +92,7 @@ namespace ServerBolnica.Servisi
                         };
 
                         izmijenjenaBolnica.LjekariUBolnici.Add(ljekar);
-                        DbManager.Instance.DodajLjekaraUBolnicu(izmijenjenaBolnica.IdBolnice, ljekar);
+                        //DbManager.Instance.DodajLjekaraUBolnicu(izmijenjenaBolnica.IdBolnice, ljekar);
                     }
                 }
 
@@ -112,9 +112,9 @@ namespace ServerBolnica.Servisi
                         };
 
                         izmijenjenaBolnica.PacijentiUBolnici.Add(pacijent);
-                        DbManager.Instance.DodajPacijentaUBolnicu(izmijenjenaBolnica.IdBolnice, pacijent);
-
-                        Bolnica b = DbManager.Instance.VratiBolnicu(izmijenjenaBolnica.IdBolnice);
+                        //DbManager.Instance.DodajPacijentaUBolnicu(izmijenjenaBolnica.IdBolnice, pacijent);
+                        DbManager.Instance.SacuvajPromjene();
+                        //Bolnica ba = DbManager.Instance.VratiBolnicu(izmijenjenaBolnica.IdBolnice);
 
                     }
                 }
@@ -122,6 +122,9 @@ namespace ServerBolnica.Servisi
                 ++izmijenjenaBolnica.Verzija;
                 DbManager.Instance.SacuvajPromjene();
                 log.Info("Bolnica sa id-em " + izmijenjenaBolnica.IdBolnice + " je izmijenjena");
+                
+                Bolnica b = DbManager.Instance.VratiBolnicu(izmijenjenaBolnica.IdBolnice);
+
                 return true;
             }
             catch (FaultException<Izuzetak> ex)
@@ -323,7 +326,28 @@ namespace ServerBolnica.Servisi
             try
             {
                 SesijaManager.Instance.AutentifikacijaIzuzetak(sesija);
-                return DbManager.Instance.VratiSveLjekare();
+
+                List<Ljekar> ljekariIzBaze = DbManager.Instance.VratiSveLjekare();
+                List<Ljekar> pomocna = new List<Ljekar>();
+
+                foreach (var item in ljekariIzBaze)
+                {
+                    bool pronadjenDupkilat = false;
+                    foreach (var item1 in pomocna)
+                    {
+                        if(item.Ime == item1.Ime && item.Prezime == item1.Prezime && item.Specijalizacija == item1.Specijalizacija &&
+                            item.Odjeljenje == item1.Odjeljenje && item1.Titula == item1.Titula)
+                        {
+                            pronadjenDupkilat = true;
+                        }
+                    }
+                    if(!pronadjenDupkilat)
+                    {
+                        pomocna.Add(item);
+                    }
+                }
+
+                return pomocna;
             }
             catch (FaultException<Izuzetak> ex)
             {
@@ -351,7 +375,27 @@ namespace ServerBolnica.Servisi
             try
             {
                 SesijaManager.Instance.AutentifikacijaIzuzetak(sesija);
-                return DbManager.Instance.VratiSvePacijente();
+
+                List<Pacijent> pacijentiIzBaze = DbManager.Instance.VratiSvePacijente();
+                List<Pacijent> pomocna = new List<Pacijent>();
+
+                foreach (var item in pacijentiIzBaze)
+                {
+                    bool pronadjenDupkilat = false;
+                    foreach (var item1 in pomocna)
+                    {
+                        if (item.Ime == item1.Ime && item.Prezime == item1.Prezime && item.Jmbg == item1.Jmbg)
+                        {
+                            pronadjenDupkilat = true;
+                        }
+                    }
+                    if (!pronadjenDupkilat)
+                    {
+                        pomocna.Add(item);
+                    }
+                }
+
+                return pomocna;
             }
             catch (FaultException<Izuzetak> ex)
             {

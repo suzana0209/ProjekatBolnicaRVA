@@ -33,9 +33,11 @@ namespace KlijentBolnica.ViewModel
         public VrstaBolnice IzabranaVrstaBolnice { get; set; } = VrstaBolnice.DjecijaBolnica;
 
         public Bolnica TrenutnaBolnica { get; set; }
-
-        public ObservableCollection<Ljekar> ListaLjekara { get; set; }
-        public ObservableCollection<Pacijent> ListaPacijenata { get; set; }
+        //Iz padajuceg menija
+        //public ObservableCollection<Ljekar> ListaLjekara { get; set; }
+        public List<Ljekar> ListaLjekara { get; set; }
+        //public ObservableCollection<Pacijent> ListaPacijenata { get; set; }
+        public List<Pacijent> ListaPacijenata { get; set; }
 
         public ObservableCollection<Ljekar> ListaLjekaraIzTabele { get; set; }
         public ObservableCollection<Pacijent> ListaPacijenataIzTabele { get; set; }
@@ -75,20 +77,14 @@ namespace KlijentBolnica.ViewModel
             List<Ljekar> ljekariIzBaze = KreirajKomunikaciju.Komunikacija.VratiLjekare();
             List<Pacijent> pacijentiIzBaze = KreirajKomunikaciju.Komunikacija.VratiPacijente();
 
-            ListaLjekara = new ObservableCollection<Ljekar>(ljekariIzBaze);
-            ListaPacijenata = new ObservableCollection<Pacijent>(pacijentiIzBaze);
+            ListaLjekara = new List<Ljekar>(ljekariIzBaze);
+            ListaPacijenata = new List<Pacijent>(pacijentiIzBaze);
 
             selektovaniLjekar = ListaLjekara.FirstOrDefault();
             selektovaniPacijent = ListaPacijenata.FirstOrDefault();
-            //PomocniPacijent pomocni = new PomocniPacijent()
-            //{
-            //    Ime = selektovaniPacijent.Ime,
-            //    Prezime = selektovaniPacijent.Prezime,
-            //    Jmbg = selektovaniPacijent.Jmbg.ToString()
-            //};
+            
 
-
-            DodajLjekaraKomanda = new RelayCommand(DodajLjekara);
+            DodajLjekaraKomanda = new RelayCommand(DodajLjekaraUTabelu);
             ObrisiLjekaraKomanda = new RelayCommand(ObrisiLjekara, SelektovanLjekar);
             DodajPacijentaKomanda = new RelayCommand(DodajPacijenta);
             ObrisiPacijentaKomanda = new RelayCommand(ObrisiPacijenta, SelektovanPacijent);
@@ -112,11 +108,9 @@ namespace KlijentBolnica.ViewModel
             BrojLjekara = TrenutnaBolnica.BrojLjekara;
             BrojOdjeljenja = TrenutnaBolnica.BrojOdjeljenja;
             IzabranaVrstaBolnice = TrenutnaBolnica.Vrsta;
-
-            //ListaLjekaraIzTabele.Add(selektovaniLjekar);
         }
 
-        public void DodajLjekara()
+        public void DodajLjekaraUTabelu()
         {
             IUndoKomanda komandaDodajLjekar = new KomandaDodajLjekara(this, 
                 selektovaniLjekar.Ime, selektovaniLjekar.Prezime, selektovaniLjekar.Specijalizacija, selektovaniLjekar.Titula, selektovaniLjekar.Odjeljenje);
@@ -166,32 +160,33 @@ namespace KlijentBolnica.ViewModel
 
             BolnicaIzmijeniDTO izmijeniBolnicuDTO = new BolnicaIzmijeniDTO()
             {
-                NoviNazivBolnice = TrenutnaBolnica.Naziv,
+                NoviNazivBolnice = NazivBolnice,
                 IdBolnice = TrenutnaBolnica.IdBolnice,
-                NoviBrojLjekara = TrenutnaBolnica.BrojLjekara,
-                NoviBrojOdjeljenja = TrenutnaBolnica.BrojOdjeljenja,
-                NovaVrstaBol = TrenutnaBolnica.Vrsta,
+                NoviBrojLjekara = BrojLjekara,
+                NoviBrojOdjeljenja = BrojOdjeljenja,
+                NovaVrstaBol = IzabranaVrstaBolnice,
                 NovaListaLjekara = ListaLjekaraIzTabele.ToList(),
                 NovaListaPacijenata = ListaPacijenataIzTabele.ToList(),
-                Verzija = TrenutnaBolnica.Verzija
-                //ForceUpdate = true
+                Verzija = TrenutnaBolnica.Verzija,
+
             };
 
             bool uspjesnoIzmijenjen = KreirajKomunikaciju.Komunikacija.IzmijeniBolnicu(izmijeniBolnicuDTO);
 
             if (!uspjesnoIzmijenjen)
             {
-                //MessageBoxResult dialogResult = MessageBox.Show("Bolnica je vec izmijenjena od strane drugog korisnika. Da li zelite pregaziti tudje izmjene", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
-                //switch (dialogResult)
-                //{
-                //    case MessageBoxResult.Yes:
-                //        log.Warn("Pregazi tudje izmjene");
-                //        izmijeniBolnicuDTO.Azurirano = true;
-                //        uspjesnoIzmijenjen = KreirajKomunikaciju.Komunikacija.IzmijeniBolnicu(izmijeniBolnicuDTO);
-                //        break;
-                //    case MessageBoxResult.Cancel:
-                //        return;
-                //}
+                MessageBoxResult dialogResult = MessageBox.Show("Bolnica je vec izmijenjena od strane drugog korisnika. Da li zelite pregaziti tudje izmjene","Pregazi izmjene", 
+                    MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                switch (dialogResult)
+                {
+                    case MessageBoxResult.Yes:
+                        log.Warn("Pregazi tudje izmjene");
+                        izmijeniBolnicuDTO.Azurirano = true;
+                        uspjesnoIzmijenjen = KreirajKomunikaciju.Komunikacija.IzmijeniBolnicu(izmijeniBolnicuDTO);
+                        break;
+                    case MessageBoxResult.Cancel:
+                        return;
+                }
             }
             Roditelj.Close();
         }
@@ -209,6 +204,8 @@ namespace KlijentBolnica.ViewModel
         {
             Roditelj.Close();
         }
+
+
     }
 }
 

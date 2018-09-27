@@ -9,13 +9,18 @@ namespace ServerBolnica.PristupBaziPodataka
     public class DbManager
     {
         private static DbManager instance = null;
-
-        public BolnicaContext bolnicaContext = null;
         
+        public BolnicaContext bolnicaContext = null;
+        //this.bolnica.CommandTimeout = 180;
+
+          
+
 
         private DbManager()
         {
             bolnicaContext = new BolnicaContext();
+            //bolnicaContext.Configuration
+            
         }
 
         public static DbManager Instance

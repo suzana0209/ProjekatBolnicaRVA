@@ -50,7 +50,7 @@ namespace KlijentBolnica.ViewModel
 
         public bool Sacuvano { get; set; }
 
-        public ICommand DodajLjekaraKomanda { get; set; }
+        public ICommand DodavanjeLjekaraKomanda { get; set; }
         public ICommand OtkaziKomanda { get; set; }
 
         public Window Roditelj { get; set; }
@@ -59,7 +59,7 @@ namespace KlijentBolnica.ViewModel
         {
             Sacuvano = false;
             OtkaziKomanda = new RelayCommand(ZatvoriProzor);
-            DodajLjekaraKomanda = new RelayCommand(LjekarDodat, ValidacijaLjekara);
+            DodavanjeLjekaraKomanda = new RelayCommand(LjekarDodat, ValidacijaLjekara);
         }
 
         public DodajLjekaraVM(string ime, string prezime, Specijalizacija specijalizacija, Titula titula, Odjeljenje odjeljenje) : this()

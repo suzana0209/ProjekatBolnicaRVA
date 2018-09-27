@@ -3,6 +3,7 @@ using Common.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,9 @@ namespace ServerBolnica.PristupBaziPodataka
         public BolnicaContext() : base("dbConnection2015")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<BolnicaContext, Konfiguracija>());
+            var adapter = (IObjectContextAdapter)this;
+            var objectContext = adapter.ObjectContext;
+            objectContext.CommandTimeout = 10 * 60;
         }
 
         public DbSet<Korisnik> Korisnici { get; set; }

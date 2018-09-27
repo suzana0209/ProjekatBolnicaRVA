@@ -27,7 +27,7 @@ namespace Common.Model
         public Specijalizacija Specijalizacija { get; set; }
         [DataMember]
         public Titula Titula { get; set; }
-        [DataMember]
+        //[DataMember]
         public  List<Bolnica> BolnicaRadiLjekar { get; set; }
       
         public Ljekar()
@@ -43,7 +43,7 @@ namespace Common.Model
             Specijalizacija = specijalizacija;
             Titula = titula;
 
-            BolnicaRadiLjekar = new List<Bolnica>();
+            //BolnicaRadiLjekar = new List<Bolnica>();
         }
 
         public Ljekar KlonirajLjekara()

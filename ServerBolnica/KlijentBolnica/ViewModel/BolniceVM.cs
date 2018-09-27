@@ -10,6 +10,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
+using System.Windows;
 using System.Windows.Input;
 
 namespace KlijentBolnica.ViewModel
@@ -53,7 +55,36 @@ namespace KlijentBolnica.ViewModel
             KlonirajBolnicuKomanda = new RelayCommand(KlonirajBolnicu, IzabranaBolnica);
             ObrisiBolnicuKomanda = new RelayCommand(ObrisiBolnicu, IzabranaBolnica);
             PretraziBolniceKomanda = new RelayCommand(PretraziBolnicu);
+
+            PretraziBolnicu();
         }
+
+        //private void StartUpdateTimer()
+        //{
+        //    Console.WriteLine("Starting timer...");
+        //    var updateTimer = new Timer(3000);
+        //    updateTimer.Elapsed += CheckForUpdatesElapsed;
+        //    updateTimer.AutoReset = true;
+        //    updateTimer.Enabled = true;
+        //}
+
+        //private void CheckForUpdatesElapsed(object sender, ElapsedEventArgs eva)
+        //{
+        //    try
+        //    {
+        //        bool newListSeted = PostaviNoveVrijednostiUServer();
+        //        if (newListSeted)
+        //        {
+        //            Console.WriteLine("CheckForUpdatesElapsed: seting new list!");
+        //            Application.Current.Dispatcher.Invoke(new Action(() => { PretraziBolnicu(); }));
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e.Message);
+        //        Console.WriteLine(e.StackTrace);
+        //    }
+        //}
 
 
         public bool IzabranaBolnica()
@@ -67,6 +98,7 @@ namespace KlijentBolnica.ViewModel
             DodajBolnicuVM sacuvajBolnicuVM = new DodajBolnicuVM();
             DodajBolnicu sacuvajBolnicu = new DodajBolnicu(sacuvajBolnicuVM);
             sacuvajBolnicu.ShowDialog();
+
             ResetujListuBolnica();
         }
 
@@ -82,12 +114,14 @@ namespace KlijentBolnica.ViewModel
         public void KlonirajBolnicu()
         {
             KreirajKomunikaciju.Komunikacija.DuplirajBolnicu(SelektovanaBolnica.IdBolnice);
+
             ResetujListuBolnica();
         }
 
         public void ObrisiBolnicu()
         {
             KreirajKomunikaciju.Komunikacija.ObrisiBolnicu(SelektovanaBolnica.IdBolnice);
+
             ResetujListuBolnica();
         }
 
@@ -129,7 +163,7 @@ namespace KlijentBolnica.ViewModel
 
         public void ResetujListuBolnica()
         {
-            bool novaListaIzmijenjena = PostaviNoveVrijednostiIzServera();
+            bool novaListaIzmijenjena = PostaviNoveVrijednostiUServer();
             if (novaListaIzmijenjena)
             {
                 Console.WriteLine("Lista resetovana!!!");
@@ -137,7 +171,7 @@ namespace KlijentBolnica.ViewModel
             }
         }
 
-        private bool PostaviNoveVrijednostiIzServera()
+        private bool PostaviNoveVrijednostiUServer()
         {
             List<Bolnica> novaListaBolnica = KreirajKomunikaciju.Komunikacija.VratiBolnice();
             bool izmijenjeno = false;

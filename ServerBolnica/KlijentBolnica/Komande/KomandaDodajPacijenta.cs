@@ -12,9 +12,9 @@ namespace KlijentBolnica.Komande
     {
         DodajBolnicuVM dodajBolnicuVM = null;
         Pacijent noviPacijent = null;
-        string Ime { get; set; }
-        string Prezime { get; set; }
-        string Jmbg { get; set; }
+        string Ime;
+        string Prezime;
+        string Jmbg;
 
         public KomandaDodajPacijenta(DodajBolnicuVM viewModel, string ime, string prezime, string jmbg)
         {
@@ -26,12 +26,11 @@ namespace KlijentBolnica.Komande
 
         public void Izvrsi()
         {
-            noviPacijent = new Pacijent()
-            {
-                Ime = Ime,
-                Prezime = Prezime,
-                Jmbg = Jmbg
-            };
+            noviPacijent = new Pacijent();
+            noviPacijent.Ime = Ime;
+            noviPacijent.Prezime = Prezime;
+            noviPacijent.Jmbg = Jmbg;
+            
             dodajBolnicuVM.ListaPacijenataIzTabele.Add(noviPacijent);
             //throw new NotImplementedException();
         }
@@ -41,5 +40,7 @@ namespace KlijentBolnica.Komande
             dodajBolnicuVM.ListaPacijenataIzTabele.Remove(noviPacijent);
             //throw new NotImplementedException();
         }
+
+        //public bool 
     }
 }

@@ -16,7 +16,7 @@
         <TextBox Name="PrezimeTextBox" HorizontalAlignment="Left" Height="23" Margin="102,146,0,0" TextWrapping="Wrap" Text="{Binding Prezime}" VerticalAlignment="Top" Width="165"/>
         <TextBox Name="JmbgTextBox" HorizontalAlignment="Left" Height="23" Margin="101,189,0,0" TextWrapping="Wrap" Text="{Binding Jmbg}" VerticalAlignment="Top" Width="165"/>
 
-        <Button Name="DodajPacijentaDugme" Content="Dodaj pacijenta" HorizontalAlignment="Left" Margin="179,235,0,0" VerticalAlignment="Top" Width="87" Height="34" Command="{Binding DodajPacijentaKomanda}"/>
+        <Button Name="DodajPacijentaDugme" Content="Dodaj pacijenta" HorizontalAlignment="Left" Margin="179,235,0,0" VerticalAlignment="Top" Width="87" Height="34" Command="{Binding DodavanjePacijentaKomanda}"/>
         <Button Name="NazadDugme" Content="Nazad" HorizontalAlignment="Left"  Margin="44,235,0,0" VerticalAlignment="Top" Width="90" Height="34" Command="{Binding OtkaziKomanda}" />
 
     </Grid>

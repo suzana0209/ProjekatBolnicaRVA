@@ -14,11 +14,11 @@ namespace KlijentBolnica.Komande
     {
         DodajBolnicuVM dodajBolnicuVM;
         Ljekar noviLjekar = null;
-        string Ime { get; set; }
-        string Prezime { get; set; }
-        Odjeljenje Odjeljenje { get; set; }
-        Specijalizacija Specijalizacija { get; set; }
-        Titula Titula { get; set; }
+        string Ime;
+        string Prezime;
+        Odjeljenje Odjeljenje;
+        Specijalizacija Specijalizacija;
+        Titula Titula;
 
         public KomandaDodajLjekara(DodajBolnicuVM viewModel, string ime, string prezime, Specijalizacija specijalizacija, 
             Titula titula, Odjeljenje odjeljenje)
@@ -33,14 +33,14 @@ namespace KlijentBolnica.Komande
 
         public void Izvrsi()
         {
-            noviLjekar = new Ljekar()
-            {
-                Ime = Ime,
-                Prezime = Prezime,
-                Titula = Titula,
-                Specijalizacija = Specijalizacija,
-                Odjeljenje = Odjeljenje
-            };
+            noviLjekar = new Ljekar();
+
+            noviLjekar.Ime = Ime;
+            noviLjekar.Prezime = Prezime;
+            noviLjekar.Titula = Titula;
+            noviLjekar.Specijalizacija = Specijalizacija;
+            noviLjekar.Odjeljenje = Odjeljenje;
+            
             
             dodajBolnicuVM.ListaLjekaraIzTabele.Add(noviLjekar);
             //throw new NotImplementedException();

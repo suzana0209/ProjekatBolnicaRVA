@@ -7,12 +7,13 @@
         mc:Ignorable="d"
         Title="" Height="328" Width="580" ResizeMode="NoResize" WindowStyle="None">
     <Grid>
-        <Button Name="NazadDugme" Content="Nazad" HorizontalAlignment="Left" VerticalAlignment="Top" Width="68" Height="20" Command="{Binding OtkaziKomanda}" />
+        <Button x:Name="NazadDugme" Content="Nazad" HorizontalAlignment="Left" VerticalAlignment="Top" Width="68" Height="20" Command="{Binding OtkaziKomanda}" />
 
-        <TextBox Name="TekstZaPretraguComboBox" HorizontalAlignment="Left" Height="25" Margin="85,20,0,0" VerticalAlignment="Top" Width="219" Text="{Binding KriterijumPretrageTekst}"/>
-        <ComboBox Name="KriterijumComboBox" HorizontalAlignment="Left" Height="25" Margin="318,20,0,0" Text="" VerticalAlignment="Top" Width="141"
+        <TextBox x:Name="TekstZaPretraguComboBox" HorizontalAlignment="Left" Height="25" Margin="85,20,0,0" 
+                 VerticalAlignment="Top" Width="219" Text="{Binding KriterijumPretrageTekst}"/>
+        <ComboBox x:Name="KriterijumComboBox" HorizontalAlignment="Left" Height="25" Margin="318,20,0,0" Text="" VerticalAlignment="Top" Width="141"
                   ItemsSource="{Binding TipoviPretrage}" SelectedItem="{Binding TipoviPretrageEnum}"/>
-        <Button Name="PretraziBolniceDugme" Content="Pretrazi bolnice" HorizontalAlignment="Left" Margin="479,20,0,0" 
+        <Button x:Name="PretraziBolniceDugme" Content="Pretrazi bolnice" HorizontalAlignment="Left" Margin="479,20,0,0" 
                 VerticalAlignment="Top" Width="101" Height="25" Command="{Binding PretraziBolniceKomanda}"/>
 
         <Rectangle HorizontalAlignment="Stretch" Fill="Gray" Height="1" Margin="-10,60,10,389"/>
@@ -28,10 +29,10 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Name="DodajBolnicuDugme" Content="Dodaj bolnicu" HorizontalAlignment="Left" Margin="122,66,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding DodajBolnicuKomanda}"/>
-        <Button Name="IzmijeniBolnicuDugme" Content="Izmijeni bolnicu" HorizontalAlignment="Left" Margin="241,66,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding IzmijeniBolnicuKomanda}"/>
-        <Button Name="ObrisiBolnicuDugme" Content="Obrisi bolnicu" HorizontalAlignment="Left" Margin="357,65,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding ObrisiBolnicuKomanda}"/>
-        <Button Name="KlonirajBolnicuDugme" Content="Kloniraj bolnicu" HorizontalAlignment="Left" Margin="475,65,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding KlonirajBolnicuKomanda}"/>
+        <Button x:Name="DodajBolnicuDugme" Content="Dodaj bolnicu" HorizontalAlignment="Left" Margin="122,66,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding DodajBolnicuKomanda}"/>
+        <Button x:Name="IzmijeniBolnicuDugme" Content="Izmijeni bolnicu" HorizontalAlignment="Left" Margin="241,66,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding IzmijeniBolnicuKomanda}"/>
+        <Button x:Name="ObrisiBolnicuDugme" Content="Obrisi bolnicu" HorizontalAlignment="Left" Margin="357,65,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding ObrisiBolnicuKomanda}"/>
+        <Button x:Name="KlonirajBolnicuDugme" Content="Kloniraj bolnicu" HorizontalAlignment="Left" Margin="475,65,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding KlonirajBolnicuKomanda}"/>
 
         <Label Content="Izaberite opciju" FontSize="15" HorizontalAlignment="Left" Margin="0,66,0,0" VerticalAlignment="Top" Width="114" Height="29"/>
 

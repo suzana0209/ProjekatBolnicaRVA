@@ -28,7 +28,7 @@
         <ComboBox Name="OdjeljenjeTextBox" HorizontalAlignment="Left" Height="23" Margin="146,220,0,0" Text="" VerticalAlignment="Top" Width="165" ItemsSource="{Binding VrstaOdjeljenja}" SelectedItem="{Binding Odjeljenje}"/>
 
         <Button Name="NazadDugme" Content="Nazad" HorizontalAlignment="Left"  Margin="72,273,0,0" VerticalAlignment="Top" Width="87" Height="34" Command="{Binding OtkaziKomanda}"/>
-        <Button Name="DodavanjeLjekaraDugme" Content="Dodaj ljekara" HorizontalAlignment="Left" Margin="224,273,0,0" VerticalAlignment="Top" Width="87" Height="34" Command="{Binding DodajLjekaraKomanda}"/>
+        <Button Name="DodavanjeLjekaraDugme" Content="Dodaj ljekara" HorizontalAlignment="Left" Margin="224,273,0,0" VerticalAlignment="Top" Width="87" Height="34" Command="{Binding DodavanjeLjekaraKomanda}"/>
 
 
     </Grid>

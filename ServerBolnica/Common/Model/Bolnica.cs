@@ -24,9 +24,9 @@ namespace Common.Model
         [DataMember]
         public int Verzija { get; set; }
         [DataMember]
-        public  List<Ljekar> LjekariUBolnici { get; set; }
-        [DataMember]
-        public  List<Pacijent> PacijentiUBolnici { get; set; }
+        public  virtual List<Ljekar> LjekariUBolnici { get; set; }
+        [DataMember]       
+        public virtual List<Pacijent> PacijentiUBolnici { get; set; }
 
         public Bolnica KlonirajBolnicu()
         {
@@ -39,12 +39,16 @@ namespace Common.Model
                 Vrsta = Vrsta,
                 Verzija = Verzija
             };
+            //kopija.LjekariUBolnici = new List<Ljekar>(LjekariUBolnici.Count);
+            //kopija.LjekariUBolnici = this.LjekariUBolnici;
+
             kopija.LjekariUBolnici = new List<Ljekar>(LjekariUBolnici.Count);
             foreach (var item in LjekariUBolnici)
             {
                 kopija.LjekariUBolnici.Add(item.KlonirajLjekara());
             }
 
+       
             kopija.PacijentiUBolnici = new List<Pacijent>(PacijentiUBolnici.Count);
             foreach (var item in PacijentiUBolnici)
             {
