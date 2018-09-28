@@ -33,11 +33,8 @@ namespace KlijentBolnica.ViewModel
         public VrstaBolnice IzabranaVrstaBolnice { get; set; } = VrstaBolnice.DjecijaBolnica;
 
         public Bolnica TrenutnaBolnica { get; set; }
-        //Iz padajuceg menija
-        //public ObservableCollection<Ljekar> ListaLjekara { get; set; }
-        public List<Ljekar> ListaLjekara { get; set; }
-        //public ObservableCollection<Pacijent> ListaPacijenata { get; set; }
-        public List<Pacijent> ListaPacijenata { get; set; }
+        public ObservableCollection<Ljekar> ListaLjekara { get; set; }
+        public ObservableCollection<Pacijent> ListaPacijenata { get; set; }
 
         public ObservableCollection<Ljekar> ListaLjekaraIzTabele { get; set; }
         public ObservableCollection<Pacijent> ListaPacijenataIzTabele { get; set; }
@@ -53,7 +50,6 @@ namespace KlijentBolnica.ViewModel
 
         public string PomocniJmbg { get; set; }
 
-
         public ICommand DodajLjekaraKomanda { get; set; }
         public ICommand ObrisiLjekaraKomanda { get; set; }
         public ICommand ObrisiPacijentaKomanda { get; set; }
@@ -65,8 +61,6 @@ namespace KlijentBolnica.ViewModel
 
         CommandExecutor commandExecutor = new CommandExecutor();
 
-        //public event PropertyChangedEventHandler PropertyChanged;
-
         public Window Roditelj { get; set; }
 
         public DodajBolnicuVM()
@@ -77,12 +71,11 @@ namespace KlijentBolnica.ViewModel
             List<Ljekar> ljekariIzBaze = KreirajKomunikaciju.Komunikacija.VratiLjekare();
             List<Pacijent> pacijentiIzBaze = KreirajKomunikaciju.Komunikacija.VratiPacijente();
 
-            ListaLjekara = new List<Ljekar>(ljekariIzBaze);
-            ListaPacijenata = new List<Pacijent>(pacijentiIzBaze);
+            ListaLjekara = new ObservableCollection<Ljekar>(ljekariIzBaze);
+            ListaPacijenata = new ObservableCollection<Pacijent>(pacijentiIzBaze);
 
             selektovaniLjekar = ListaLjekara.FirstOrDefault();
-            selektovaniPacijent = ListaPacijenata.FirstOrDefault();
-            
+            selektovaniPacijent = ListaPacijenata.FirstOrDefault();            
 
             DodajLjekaraKomanda = new RelayCommand(DodajLjekaraUTabelu);
             ObrisiLjekaraKomanda = new RelayCommand(ObrisiLjekara, SelektovanLjekar);

@@ -122,7 +122,6 @@ namespace ServerBolnica.Servisi
                     Izuzetak ex = new Izuzetak();
                     ex.Poruka = "Korisnik nije autentifikovan!";
                     throw new FaultException<Izuzetak>(ex);
-                    //throw new FaultException<Izuzetak>(new Izuzetak("Korisnik nije autentifikovan!"));
                 }
             }
             catch (FaultException<Izuzetak> ex)

@@ -25,8 +25,6 @@ namespace KlijentBolnica.View
             ProzorManager = prozorManager;
             if (JaSamAdmin() && korisnikDTO != null)
             {
-                
-
                 ImePrezime = korisnikDTO.Ime + " " + korisnikDTO.Prezime;
                 InitializeComponent();
                 DataContext = this;
@@ -43,7 +41,6 @@ namespace KlijentBolnica.View
             KreirajKomunikaciju.Komunikacija.OdjaviSe();
             ProzorManager.PrethodnaStrana();
         }
-
 
         private void IzmijeniPodatkeDugme_Click(object sender, RoutedEventArgs e)
         {
@@ -67,11 +64,6 @@ namespace KlijentBolnica.View
 
         private bool JaSamAdmin()
         {
-            //if(KreirajKomunikaciju.Komunikacija.VratiInfoKorisnika() == null)
-            //{
-            //    return;
-            //}
-
             if (KreirajKomunikaciju.Komunikacija.VratiInfoKorisnika() == null)
                 return false;
             
@@ -89,12 +81,6 @@ namespace KlijentBolnica.View
         private KorisnikDTO TrenutnoUlogovan()
         {
             return KreirajKomunikaciju.Komunikacija.VratiInfoKorisnika();
-        }
-
-        private void LogoviDugme_Click(object sender, RoutedEventArgs e)
-        {
-            Logger logger = new Logger();
-            logger.ShowDialog();
         }
     }
 }

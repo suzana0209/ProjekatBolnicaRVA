@@ -50,8 +50,6 @@ namespace Common.Model
                 Jmbg = Jmbg
             };
             return kopija;
-        }
-
-        
+        }      
     }
 }

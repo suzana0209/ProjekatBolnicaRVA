@@ -5,19 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KlijentBolnica.View"
         mc:Ignorable="d"
-        Title="" Height="321.019" Width="312.739" ResizeMode="NoResize" WindowStyle="None">
-    <Grid>
-        <Label Content="Dodavanje pacijenta" FontSize="30" HorizontalAlignment="Left" Margin="16,23,0,0" VerticalAlignment="Top" Width="287"/>
-        <Label Content="Ime" HorizontalAlignment="Left" Margin="28,102,0,0" VerticalAlignment="Top" Width="51"/>
-        <Label Content="Prezime" HorizontalAlignment="Left" Margin="28,143,0,0" VerticalAlignment="Top" Width="52"/>
-        <Label Content="JMBG" HorizontalAlignment="Left" Margin="28,186,0,0" VerticalAlignment="Top" Width="51"/>
+        Title="" Height="321.019" Width="312.739" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="WindowFrameBrush" StartPoint="0,0.5" EndPoint="1,0.5">
+            <GradientStop Color="CadetBlue" Offset="0.4"/>
+            <GradientStop Color="Gray" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Resources>
+    <Border Background="#50FFFFFF" CornerRadius="5" BorderBrush="{StaticResource WindowFrameBrush}" BorderThickness="3,0,3,3">
 
-        <TextBox Name="ImeTextBox" HorizontalAlignment="Left" Height="23" Margin="102,102,0,0" TextWrapping="Wrap" Text="{Binding Ime}" VerticalAlignment="Top" Width="165"/>
-        <TextBox Name="PrezimeTextBox" HorizontalAlignment="Left" Height="23" Margin="102,146,0,0" TextWrapping="Wrap" Text="{Binding Prezime}" VerticalAlignment="Top" Width="165"/>
-        <TextBox Name="JmbgTextBox" HorizontalAlignment="Left" Height="23" Margin="101,189,0,0" TextWrapping="Wrap" Text="{Binding Jmbg}" VerticalAlignment="Top" Width="165"/>
+        <Grid>
+            <Label Content="Dodavanje pacijenta" FontSize="30" HorizontalAlignment="Left" Margin="16,23,0,0" VerticalAlignment="Top" Width="287"/>
+            <Label Content="Ime" HorizontalAlignment="Left" Margin="28,102,0,0" VerticalAlignment="Top" Width="51"/>
+            <Label Content="Prezime" HorizontalAlignment="Left" Margin="28,143,0,0" VerticalAlignment="Top" Width="52"/>
+            <Label Content="JMBG" HorizontalAlignment="Left" Margin="28,186,0,0" VerticalAlignment="Top" Width="51"/>
 
-        <Button Name="DodajPacijentaDugme" Content="Dodaj pacijenta" HorizontalAlignment="Left" Margin="179,235,0,0" VerticalAlignment="Top" Width="87" Height="34" Command="{Binding DodavanjePacijentaKomanda}"/>
-        <Button Name="NazadDugme" Content="Nazad" HorizontalAlignment="Left"  Margin="44,235,0,0" VerticalAlignment="Top" Width="90" Height="34" Command="{Binding OtkaziKomanda}" />
+            <TextBox Name="ImeTextBox" HorizontalAlignment="Left" Height="23" Margin="102,102,0,0" TextWrapping="Wrap" Text="{Binding Ime}" VerticalAlignment="Top" Width="165"/>
+            <TextBox Name="PrezimeTextBox" HorizontalAlignment="Left" Height="23" Margin="102,146,0,0" TextWrapping="Wrap" Text="{Binding Prezime}" VerticalAlignment="Top" Width="165"/>
+            <TextBox Name="JmbgTextBox" HorizontalAlignment="Left" Height="23" Margin="101,189,0,0" TextWrapping="Wrap" Text="{Binding Jmbg}" VerticalAlignment="Top" Width="165"/>
 
-    </Grid>
+            <Button Name="DodajPacijentaDugme" Content="Potvrdi" HorizontalAlignment="Left" Margin="179,235,0,0" VerticalAlignment="Top" Width="87" Height="34" Command="{Binding DodavanjePacijentaKomanda}"/>
+            <Button Name="NazadDugme" Content="Otkazi" HorizontalAlignment="Left"  Margin="44,235,0,0" VerticalAlignment="Top" Width="90" Height="34" Command="{Binding OtkaziKomanda}" />
+
+        </Grid>
+    </Border>
 </Window>

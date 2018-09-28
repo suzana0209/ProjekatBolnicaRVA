@@ -39,9 +39,7 @@ namespace Common.Model
                 Vrsta = Vrsta,
                 Verzija = Verzija
             };
-            //kopija.LjekariUBolnici = new List<Ljekar>(LjekariUBolnici.Count);
-            //kopija.LjekariUBolnici = this.LjekariUBolnici;
-
+            
             kopija.LjekariUBolnici = new List<Ljekar>(LjekariUBolnici.Count);
             foreach (var item in LjekariUBolnici)
             {

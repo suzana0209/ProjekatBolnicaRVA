@@ -52,8 +52,6 @@ namespace KlijentBolnica.ViewModel
         {
             Sacuvano = true;
             Roditelj.Close();
-        }
-
-       
+        }      
     }
 }

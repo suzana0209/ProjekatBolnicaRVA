@@ -39,8 +39,6 @@ namespace KlijentBolnica.Komande
         {
             dodajBolnicuVM.ListaPacijenataIzTabele.Remove(noviPacijent);
             //throw new NotImplementedException();
-        }
-
-        //public bool 
+        } 
     }
 }

@@ -43,13 +43,11 @@ namespace KlijentBolnica.Komande
             
             
             dodajBolnicuVM.ListaLjekaraIzTabele.Add(noviLjekar);
-            //throw new NotImplementedException();
         }
 
         public void Vrati()
         {
             dodajBolnicuVM.ListaLjekaraIzTabele.Remove(noviLjekar);
-            //throw new NotImplementedException();
         }
     }
 }

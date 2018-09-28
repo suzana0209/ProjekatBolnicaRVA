@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\suzana\Desktop\PokusajPromijenitiBol\ServerBolnica\KlijentBolnica\obj\Debug\
+C:\Users\suzana\Desktop\ProjekatBolnicaRVA\ServerBolnica\KlijentBolnica\obj\Debug\
 KlijentBolnica
 none
 false
 DEBUG;TRACE
-C:\Users\suzana\Desktop\PokusajPromijenitiBol\ServerBolnica\KlijentBolnica\App.xaml
-13-348582992
+C:\Users\suzana\Desktop\ProjekatBolnicaRVA\ServerBolnica\KlijentBolnica\App.xaml
+12-1479437584
 
-451367246121
-19981670401
-MainWindow.xaml;View\Bolnice.xaml;View\DodajBolnicu.xaml;View\DodajKorisnika.xaml;View\DodajLjekara.xaml;View\DodajPacijenta.xaml;View\IzmijeniPodatkeKorisniku.xaml;View\Ljekari.xaml;View\Logger.xaml;View\Logovanje.xaml;View\NevalidanUnos.xaml;View\Pacijenti.xaml;View\Pocetna.xaml;
+43-1113223308
+19-1586751270
+MainWindow.xaml;View\Bolnice.xaml;View\DodajBolnicu.xaml;View\DodajKorisnika.xaml;View\DodajLjekara.xaml;View\DodajPacijenta.xaml;View\IzmijeniPodatkeKorisniku.xaml;View\Ljekari.xaml;View\Logovanje.xaml;View\NevalidanUnos.xaml;View\Pacijenti.xaml;View\Pocetna.xaml;
 
 True
 

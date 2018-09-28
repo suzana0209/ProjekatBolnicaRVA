@@ -22,7 +22,6 @@ namespace KlijentBolnica.ViewModel
 
         public Bolnica SelektovanaBolnica { get; set; }
 
-        //Komande
         public ICommand OtkaziKomanda { get; set; }
         public ICommand DodajBolnicuKomanda { get; set; }
         public ICommand IzmijeniBolnicuKomanda { get; set; }
@@ -48,7 +47,7 @@ namespace KlijentBolnica.ViewModel
         {
             listaBolnicaIzBaze = KreirajKomunikaciju.Komunikacija.VratiBolnice();
             Bolnice = new ObservableCollection<Bolnica>(listaBolnicaIzBaze);
-            //komande
+            
             OtkaziKomanda = new KomandaOtkazi(this);
             DodajBolnicuKomanda = new RelayCommand(DodajBolnicu);
             IzmijeniBolnicuKomanda = new RelayCommand(IzmijeniBolnicu, IzabranaBolnica);
@@ -58,33 +57,6 @@ namespace KlijentBolnica.ViewModel
 
             PretraziBolnicu();
         }
-
-        //private void StartUpdateTimer()
-        //{
-        //    Console.WriteLine("Starting timer...");
-        //    var updateTimer = new Timer(3000);
-        //    updateTimer.Elapsed += CheckForUpdatesElapsed;
-        //    updateTimer.AutoReset = true;
-        //    updateTimer.Enabled = true;
-        //}
-
-        //private void CheckForUpdatesElapsed(object sender, ElapsedEventArgs eva)
-        //{
-        //    try
-        //    {
-        //        bool newListSeted = PostaviNoveVrijednostiUServer();
-        //        if (newListSeted)
-        //        {
-        //            Console.WriteLine("CheckForUpdatesElapsed: seting new list!");
-        //            Application.Current.Dispatcher.Invoke(new Action(() => { PretraziBolnicu(); }));
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine(e.Message);
-        //        Console.WriteLine(e.StackTrace);
-        //    }
-        //}
 
 
         public bool IzabranaBolnica()

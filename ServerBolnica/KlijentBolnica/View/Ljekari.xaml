@@ -5,30 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KlijentBolnica.View"
         mc:Ignorable="d"
-        Title="" Height="375" Width="663.953" ResizeMode="NoResize" WindowStyle="None">
-    <Grid>
-        <Label Content="LISTA LJEKARA" FontSize="30" HorizontalAlignment="Left" Margin="223,36,0,0" VerticalAlignment="Top"/>
+        Title="" Height="341" Width="516.953" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="WindowFrameBrush" StartPoint="0,0.5" EndPoint="1,0.5">
+            <GradientStop Color="CadetBlue" Offset="0.4"/>
+            <GradientStop Color="Gray" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Resources>
+    <Border Background="#50FFFFFF" CornerRadius="5" BorderBrush="{StaticResource WindowFrameBrush}" BorderThickness="3,0,3,3">
 
-        <Button Name="DodajLjekaraDugme" Content="Dodaj ljekara" HorizontalAlignment="Left" Margin="0,148,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding DodajLjekaraKom}"/>
+        <Grid>
+            <Label Content="LISTA LJEKARA" FontSize="30" HorizontalAlignment="Left" Margin="153,0,0,0" VerticalAlignment="Top"/>
 
-        <Button Name="IzmijeniLjekaraDugme" Content="Izmijeni ljekara" HorizontalAlignment="Left" Margin="0,209,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding IzmijeniLjekaraKomanda}"/>
-        <Button Name="ObrisiLjekaraDugme" Content="Obrisi ljekara" HorizontalAlignment="Left" Margin="0,262,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding ObrisiLjekaraKomanda}"/>
+            <Button Name="DodajLjekaraDugme" Content="Dodaj ljekara" HorizontalAlignment="Left" Margin="72,67,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding DodajLjekaraKom}"/>
 
-        <Button Name="NazadDugme" Content="Nazad" HorizontalAlignment="Left" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding OtkaziKomanda}"/>
+            <Button Name="ObrisiLjekaraDugme" Content="Obrisi ljekara" HorizontalAlignment="Left" Margin="309,67,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding ObrisiLjekaraKomanda}"/>
+
+            <Button Name="NazadDugme" Content="Nazad" HorizontalAlignment="Left" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding OtkaziKomanda}"/>
 
 
-        <DataGrid x:Name="dataGrid" Margin="148,114,0,0" ItemsSource="{Binding listaLjekara}" AutoGenerateColumns="false" Height="227" 
-                  VerticalAlignment="Top" HorizontalAlignment="Left" Width="516" IsReadOnly="True" SelectedItem="{Binding selektovanLjekar}">
-            <DataGrid.Columns>
-                <!--<DataGridTextColumn Binding="{Binding Path=Id}" Header="Id ljekara" />-->
-                <DataGridTextColumn Binding="{Binding Path=IdLjekara}" Header="ID" Width="0.5*"/>
-                <DataGridTextColumn Binding="{Binding Path=Ime}" Header="Ime" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Prezime}" Header="Prezime" Width="*" />
-                <DataGridTextColumn Binding="{Binding Path=Specijalizacija}" Header="Specijalizacija" Width="1.5*"/>
-                <DataGridTextColumn Binding="{Binding Path=Titula}" Header="Titula" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Odjeljenje}" Header="Odjeljenje" Width="1.5*"/>
-            </DataGrid.Columns>
-        </DataGrid>
+            <DataGrid x:Name="dataGrid" Margin="0,114,0,-3" ItemsSource="{Binding listaLjekara}" AutoGenerateColumns="false" Height="227" 
+                  VerticalAlignment="Top" HorizontalAlignment="Left" Width="511" IsReadOnly="True" SelectedItem="{Binding selektovanLjekar}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=IdLjekara}" Header="ID" Width="0.5*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Ime}" Header="Ime" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Prezime}" Header="Prezime" Width="*" />
+                    <DataGridTextColumn Binding="{Binding Path=Specijalizacija}" Header="Specijalizacija" Width="1.5*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Titula}" Header="Titula" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Odjeljenje}" Header="Odjeljenje" Width="1.5*"/>
+                </DataGrid.Columns>
+            </DataGrid>
 
-    </Grid>
+        </Grid>
+    </Border>
 </Window>

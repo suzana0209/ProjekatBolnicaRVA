@@ -5,36 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KlijentBolnica.View"
         mc:Ignorable="d"
-        Title="" Height="328" Width="580" ResizeMode="NoResize" WindowStyle="None">
-    <Grid>
-        <Button x:Name="NazadDugme" Content="Nazad" HorizontalAlignment="Left" VerticalAlignment="Top" Width="68" Height="20" Command="{Binding OtkaziKomanda}" />
+        Title="" Height="328" Width="580" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="WindowFrameBrush" StartPoint="0,0.5" EndPoint="1,0.5">
+            <GradientStop Color="CadetBlue" Offset="0.4"/>
+            <GradientStop Color="Gray" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Resources>
+    <Border Background="#50FFFFFF" CornerRadius="5" BorderBrush="{StaticResource WindowFrameBrush}" BorderThickness="3,0,3,3">
+        <Grid>
+            <Button x:Name="NazadDugme" Content="Nazad" HorizontalAlignment="Left" VerticalAlignment="Top" Width="68" Height="20" Command="{Binding OtkaziKomanda}" />
 
-        <TextBox x:Name="TekstZaPretraguComboBox" HorizontalAlignment="Left" Height="25" Margin="85,20,0,0" 
+            <TextBox x:Name="TekstZaPretraguComboBox" HorizontalAlignment="Left" Height="25" Margin="85,20,0,0" 
                  VerticalAlignment="Top" Width="219" Text="{Binding KriterijumPretrageTekst}"/>
-        <ComboBox x:Name="KriterijumComboBox" HorizontalAlignment="Left" Height="25" Margin="318,20,0,0" Text="" VerticalAlignment="Top" Width="141"
+            <ComboBox x:Name="KriterijumComboBox" HorizontalAlignment="Left" Height="25" Margin="318,20,0,0" Text="" VerticalAlignment="Top" Width="141"
                   ItemsSource="{Binding TipoviPretrage}" SelectedItem="{Binding TipoviPretrageEnum}"/>
-        <Button x:Name="PretraziBolniceDugme" Content="Pretrazi bolnice" HorizontalAlignment="Left" Margin="479,20,0,0" 
-                VerticalAlignment="Top" Width="101" Height="25" Command="{Binding PretraziBolniceKomanda}"/>
+            <Button x:Name="PretraziBolniceDugme" Content="Pretrazi bolnice" HorizontalAlignment="Left" Margin="475,20,0,0" 
+                VerticalAlignment="Top" Width="99" Height="25" Command="{Binding PretraziBolniceKomanda}"/>
 
-        <Rectangle HorizontalAlignment="Stretch" Fill="Gray" Height="1" Margin="-10,60,10,389"/>
+            <Rectangle HorizontalAlignment="Stretch" Fill="Gray" Height="1" Margin="-10,60,10,389"/>
 
-        <DataGrid x:Name="dgridBolnice" HorizontalAlignment="Left" Margin="0,135,0,0" VerticalAlignment="Top" Height="193" Width="580"
+            <DataGrid x:Name="dgridBolnice" HorizontalAlignment="Left" Margin="0,135,0,0" VerticalAlignment="Top" Height="190" Width="574"
                   ItemsSource="{Binding Bolnice}" AutoGenerateColumns="false" IsReadOnly="True" SelectedItem="{Binding SelektovanaBolnica}" HorizontalContentAlignment="Center">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=IdBolnice}" Header="Id bolnice" />
-                <DataGridTextColumn Binding="{Binding Path=BrojLjekara}" Header="Broj Ljekara" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=BrojOdjeljenja}" Header="Broj Odjeljenja" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Naziv}" Header="Naziv Bolnice" Width="2*"/>
-                <DataGridTextColumn Binding="{Binding Path=Vrsta}" Header="Vrsta Bolnice" Width="*"/>
-            </DataGrid.Columns>
-        </DataGrid>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=IdBolnice}" Header="Id bolnice" />
+                    <DataGridTextColumn Binding="{Binding Path=BrojLjekara}" Header="Broj Ljekara" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=BrojOdjeljenja}" Header="Broj Odjeljenja" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Naziv}" Header="Naziv Bolnice" Width="2*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Vrsta}" Header="Vrsta Bolnice" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="DodajBolnicuDugme" Content="Dodaj bolnicu" HorizontalAlignment="Left" Margin="122,66,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding DodajBolnicuKomanda}"/>
+            <Button x:Name="IzmijeniBolnicuDugme" Content="Izmijeni bolnicu" HorizontalAlignment="Left" Margin="241,66,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding IzmijeniBolnicuKomanda}"/>
+            <Button x:Name="ObrisiBolnicuDugme" Content="Obrisi bolnicu" HorizontalAlignment="Left" Margin="357,65,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding ObrisiBolnicuKomanda}"/>
+            <Button x:Name="KlonirajBolnicuDugme" Content="Kloniraj bolnicu" HorizontalAlignment="Left" Margin="475,65,0,0" VerticalAlignment="Top" Width="99" Height="34" Command="{Binding KlonirajBolnicuKomanda}"/>
 
-        <Button x:Name="DodajBolnicuDugme" Content="Dodaj bolnicu" HorizontalAlignment="Left" Margin="122,66,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding DodajBolnicuKomanda}"/>
-        <Button x:Name="IzmijeniBolnicuDugme" Content="Izmijeni bolnicu" HorizontalAlignment="Left" Margin="241,66,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding IzmijeniBolnicuKomanda}"/>
-        <Button x:Name="ObrisiBolnicuDugme" Content="Obrisi bolnicu" HorizontalAlignment="Left" Margin="357,65,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding ObrisiBolnicuKomanda}"/>
-        <Button x:Name="KlonirajBolnicuDugme" Content="Kloniraj bolnicu" HorizontalAlignment="Left" Margin="475,65,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding KlonirajBolnicuKomanda}"/>
+            <Label Content="Izaberite opciju" FontSize="15" HorizontalAlignment="Left" Margin="0,66,0,0" VerticalAlignment="Top" Width="114" Height="29"/>
 
-        <Label Content="Izaberite opciju" FontSize="15" HorizontalAlignment="Left" Margin="0,66,0,0" VerticalAlignment="Top" Width="114" Height="29"/>
-
-    </Grid>
+        </Grid>
+    </Border>
 </Window>

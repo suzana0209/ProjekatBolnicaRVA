@@ -25,7 +25,6 @@ namespace KlijentBolnica.View
         {
             InitializeComponent();
             PacijentiVM viewModel = new PacijentiVM(prozorManager);
-            //DataContext = new PacijentiVM(prozorManager);
             DataContext = viewModel;
 
         }

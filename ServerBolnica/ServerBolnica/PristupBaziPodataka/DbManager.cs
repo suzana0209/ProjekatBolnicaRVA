@@ -11,16 +11,10 @@ namespace ServerBolnica.PristupBaziPodataka
         private static DbManager instance = null;
         
         public BolnicaContext bolnicaContext = null;
-        //this.bolnica.CommandTimeout = 180;
-
-          
-
-
+        
         private DbManager()
         {
             bolnicaContext = new BolnicaContext();
-            //bolnicaContext.Configuration
-            
         }
 
         public static DbManager Instance
@@ -43,8 +37,7 @@ namespace ServerBolnica.PristupBaziPodataka
             }
         }
 
-        
-
+ 
         public Korisnik GetUserByUsername(string korisnickoIme)
         {
             lock(bolnicaContext)
@@ -159,7 +152,6 @@ namespace ServerBolnica.PristupBaziPodataka
 
         public Pacijent VratiPacijentaPrekoJmbg(string jmbg)
         {
-            //bool nadjen = false;
             Pacijent p = null;
             List<Pacijent> pacijenti = VratiSvePacijente().ToList();
             lock(bolnicaContext)
@@ -168,7 +160,6 @@ namespace ServerBolnica.PristupBaziPodataka
                 {
                     if(item.Jmbg == jmbg)
                     {
-                        //nadjen = true;
                         p = item;
                         break;
                     }
@@ -308,8 +299,6 @@ namespace ServerBolnica.PristupBaziPodataka
             {
                 return bolnicaContext.Bolnice.Find(idBolnice);
             }
-        }
-
-       
+        }      
     }
 }

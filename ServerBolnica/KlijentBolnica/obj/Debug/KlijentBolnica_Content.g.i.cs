@@ -8,8 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("slike/naslovna.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("slike/redo.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("slike/undo.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("slike/grays.jpg")]
 
 

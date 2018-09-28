@@ -5,78 +5,80 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KlijentBolnica.View"
         mc:Ignorable="d"
-        Title="" Height="468" Width="1045" ResizeMode="NoResize" WindowStyle="None">
-    <Grid>
-        <Label Content="Dodavanje bolnice" FontSize="15" HorizontalAlignment="Left" Margin="449,5,0,0" VerticalAlignment="Top" Width="143" Height="29"/>
+        Title="" Height="468" Width="1045" AllowsTransparency="True" ResizeMode="NoResize" WindowStyle="None">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="WindowFrameBrush" StartPoint="0,0.5" EndPoint="1,0.5">
+            <GradientStop Color="CadetBlue" Offset="0.4"/>
+            <GradientStop Color="Gray" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Resources>
+    <Border Background="#50FFFFFF" CornerRadius="5" BorderBrush="{StaticResource WindowFrameBrush}" BorderThickness="3,0,3,3">
+        <Grid>
+            <Label Content="PODACI O BOLNICI" FontSize="15" HorizontalAlignment="Left" Margin="449,5,0,0" VerticalAlignment="Top" Width="143" Height="29"/>
 
-        <Button x:Name="UndoDugme" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="20" Margin="473,40,0,0" Command="{Binding UndoKomanda}">
-            <StackPanel>
-                <Image Source="/slike/Undo.jpg" Height="18" Width="34" RenderTransformOrigin="0.559,0.5"/>
-                <!--<TextBlock Text="Blabla" Height="2" Width="29" />-->
-            </StackPanel>
-        </Button>
-        <Button x:Name="RedoDugme" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="20" Margin="527,40,0,0" Command="{Binding RedoKomanda}">
-            <StackPanel>
-                <Image Source="/slike/Redo.jpg" Height="18" Width="34" RenderTransformOrigin="0.377,0.574"/>
-                <!--<TextBlock Text="Blabla" Height="2" Width="29" />-->
-            </StackPanel>
-        </Button>
+            <Button x:Name="UndoDugme" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="20" Margin="473,40,0,0" Command="{Binding UndoKomanda}">
+                <StackPanel>
+                    <Image Source="/slike/Undo.jpg" Height="18" Width="34" RenderTransformOrigin="0.559,0.5"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="RedoDugme" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="20" Margin="527,40,0,0" Command="{Binding RedoKomanda}">
+                <StackPanel>
+                    <Image Source="/slike/Redo.jpg" Height="18" Width="34" RenderTransformOrigin="0.377,0.574"/>
 
-        <Label Content="Naziv bolnice" HorizontalAlignment="Left" Margin="155,79,0,0" VerticalAlignment="Top" Width="100" Height="24"/>
-        <Label Content="Vrsta bolnice" HorizontalAlignment="Left" Margin="155,108,0,0" VerticalAlignment="Top" Width="100" Height="24"/>
-        <Label Content="Broj odjeljenja" HorizontalAlignment="Left" Margin="625,79,0,0" VerticalAlignment="Top" Width="100" Height="27"/>
-        <Label Content="Broj ljekara" HorizontalAlignment="Left" Margin="625,111,0,0" VerticalAlignment="Top" Width="100" Height="27"/>
+                </StackPanel>
+            </Button>
 
-        <TextBox x:Name="NazivBolniceTextBox" HorizontalAlignment="Left" Height="24" Margin="260,79,0,0" VerticalAlignment="Top" Width="126" 
+            <Label Content="Naziv bolnice" HorizontalAlignment="Left" Margin="155,79,0,0" VerticalAlignment="Top" Width="100" Height="24"/>
+            <Label Content="Vrsta bolnice" HorizontalAlignment="Left" Margin="155,108,0,0" VerticalAlignment="Top" Width="100" Height="24"/>
+            <Label Content="Broj odjeljenja" HorizontalAlignment="Left" Margin="625,79,0,0" VerticalAlignment="Top" Width="100" Height="27"/>
+            <Label Content="Broj ljekara" HorizontalAlignment="Left" Margin="625,111,0,0" VerticalAlignment="Top" Width="100" Height="27"/>
+
+            <TextBox x:Name="NazivBolniceTextBox" HorizontalAlignment="Left" Height="24" Margin="260,79,0,0" VerticalAlignment="Top" Width="126" 
                  Text="{Binding NazivBolnice}"/>
-        <ComboBox x:Name="VrstaBolniceComboBox" HorizontalAlignment="Left" Height="24" Margin="260,108,0,0" VerticalAlignment="Top" Width="126" ItemsSource="{Binding VrstaBolniceDodavanje}" SelectedItem="{Binding IzabranaVrstaBolnice}"/>
-        <TextBox x:Name="BrojOdjeljenjaTextBox" HorizontalAlignment="Left" Height="24" Margin="730,76,0,0" VerticalAlignment="Top" Width="126" Text="{Binding BrojOdjeljenja}"/>
-        <TextBox x:Name="BrojLjekaraTextBox" HorizontalAlignment="Left" Height="24" Margin="730,108,0,0" VerticalAlignment="Top" Width="126" Text="{Binding BrojLjekara}"/>
+            <ComboBox x:Name="VrstaBolniceComboBox" HorizontalAlignment="Left" Height="24" Margin="260,108,0,0" VerticalAlignment="Top" Width="126" ItemsSource="{Binding VrstaBolniceDodavanje}" SelectedItem="{Binding IzabranaVrstaBolnice}"/>
+            <TextBox x:Name="BrojOdjeljenjaTextBox" HorizontalAlignment="Left" Height="24" Margin="730,76,0,0" VerticalAlignment="Top" Width="126" Text="{Binding BrojOdjeljenja}"/>
+            <TextBox x:Name="BrojLjekaraTextBox" HorizontalAlignment="Left" Height="24" Margin="730,108,0,0" VerticalAlignment="Top" Width="126" Text="{Binding BrojLjekara}"/>
 
-        <Rectangle HorizontalAlignment="Stretch" Fill="Gray" Height="1" Margin="-10,148,10,582"/>
-        <Label Content="Dodajte ljekare" HorizontalAlignment="Left" Margin="205,153,0,0" VerticalAlignment="Top" Width="94" Height="27"/>
-        <Label Content="Izaberite ljekara" HorizontalAlignment="Left" Margin="63,182,0,0" VerticalAlignment="Top" Width="96" Height="27"/>
+            <Rectangle HorizontalAlignment="Stretch" Fill="Gray" Height="1" Margin="-10,148,10,582"/>
+            <Label Content="Dodaj ljekare" HorizontalAlignment="Left" Margin="219,154,0,0" VerticalAlignment="Top" Width="100" Height="27"/>
+            <Label Content="Izaberi ljekara" HorizontalAlignment="Left" Margin="10,182,0,0" VerticalAlignment="Top" Width="102" Height="27"/>
 
-        <ComboBox x:Name="ListaLjekaraComboBox" HorizontalAlignment="Left" DisplayMemberPath="Ime" Height="20" Margin="164,189,0,0"  VerticalAlignment="Top" 
-                  Width="166" ItemsSource="{Binding ListaLjekara}" SelectedItem="{Binding selektovaniLjekar}" />
-        <Button x:Name="DodajLjekaraUBolnicu" Content="Dodaj ljekara" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" Height="20" Margin="339,189,0,0" Command="{Binding DodajLjekaraKomanda}"/>
-        <Button x:Name="ObrisiLjekaraUBolnicu" Content="Obrisi ljekara" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" Height="20" Margin="438,189,0,0" Command="{Binding ObrisiLjekaraKomanda}"/>
-        <!--<DataGrid x:Name="dgridProducts" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Height="125" Width="335"
-                  ItemsSource="{Binding Entries}" AutoGenerateColumns="false" IsReadOnly="True" SelectedIndex="{Binding SelectedEntryIndex}" 
-                  SelectedItem="{Binding SelectedEntry}">-->
-        <DataGrid x:Name="DataGridLjekari" HorizontalAlignment="Left" Margin="0,232,0,0" VerticalAlignment="Top" Height="150" Width="500"
+            <ComboBox x:Name="ListaLjekaraComboBox" HorizontalAlignment="Left" DisplayMemberPath="Ime" Height="20" Margin="117,189,0,0"  VerticalAlignment="Top" 
+                  Width="176" ItemsSource="{Binding ListaLjekara}" SelectedItem="{Binding selektovaniLjekar}" />
+            <Button x:Name="DodajLjekaraUBolnicu" Content="Dodaj ljekara" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="20" Margin="303,189,0,0" Command="{Binding DodajLjekaraKomanda}"/>
+            <Button x:Name="ObrisiLjekaraUBolnicu" Content="Obrisi ljekara" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="20" Margin="408,189,0,0" Command="{Binding ObrisiLjekaraKomanda}"/>
+            <DataGrid x:Name="DataGridLjekari" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top" Height="150" Width="490"
                    AutoGenerateColumns="false" IsReadOnly="True" HorizontalContentAlignment="Center" SelectedIndex ="{Binding IdSelektovanogLjekara}"
                   ItemsSource="{Binding ListaLjekaraIzTabele}" SelectedItem="{Binding selektovaniLjekarIzTabele}">
-            <DataGrid.Columns>
-                <!--<DataGridTextColumn Binding="{Binding Path=Ljekar.IdLjekara}" Header="Id ljekara" />-->
-                <DataGridTextColumn Binding="{Binding Path=Ime}" Header="Ime" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Prezime}" Header="Prezime" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Specijalizacija}" Header="Specijalizacija" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Titula}" Header="Titula" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Odjeljenje}" Header="Odjeljenje" Width="*"/>
-            </DataGrid.Columns>
-        </DataGrid>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=Ime}" Header="Ime" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Prezime}" Header="Prezime" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Specijalizacija}" Header="Specijalizacija" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Titula}" Header="Titula" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Odjeljenje}" Header="Odjeljenje" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
 
-        <Rectangle HorizontalAlignment="Stretch" Fill="Gray" Height="1" Margin="-10,413,10,317"/>
-        <Label Content="Dodajte pacijenta" HorizontalAlignment="Left" Margin="730,150,0,0" VerticalAlignment="Top" Width="106" Height="34"/>
-        <Label Content="Izaberite pacijenta" HorizontalAlignment="Left" Margin="565,182,0,0" VerticalAlignment="Top" Width="107" Height="27"/>
+            <Rectangle HorizontalAlignment="Stretch" Fill="Gray" Height="1" Margin="-10,413,10,317"/>
+            <Label Content="Dodaj pacijenta" HorizontalAlignment="Left" Margin="745,146,0,0" VerticalAlignment="Top" Width="111" Height="34"/>
+            <Label Content="Izaberi pacijenta" HorizontalAlignment="Left" Margin="536,182,0,0" VerticalAlignment="Top" Width="99" Height="27"/>
 
-        <ComboBox x:Name="ListaPacijenataComboBox" HorizontalAlignment="Left" Height="20" DisplayMemberPath="Ime" Margin="696,189,0,0" Text="" VerticalAlignment="Top" Width="166" ItemsSource="{Binding ListaPacijenata}" SelectedItem="{Binding selektovaniPacijent}"/>
-        <Button x:Name="DodajPacijentaUBolnicuDugme" Content="Dodaj pacijenta" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="20" Margin="889,189,0,0" Command="{Binding DodajPacijentaKomanda}"/>
-        <Button x:Name="ObrisiPacijentaUBolnicuDugme" Content="Obrisi pacijenta" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Height="20" Margin="889,160,0,0" Command="{Binding ObrisiPacijentaKomanda}"/>
+            <ComboBox x:Name="ListaPacijenataComboBox" HorizontalAlignment="Left" Height="20" DisplayMemberPath="Ime" Margin="635,189,0,0" Text="" VerticalAlignment="Top" Width="172" ItemsSource="{Binding ListaPacijenata}" SelectedItem="{Binding selektovaniPacijent}"/>
+            <Button x:Name="DodajPacijentaUBolnicuDugme" Content="Dodaj pacijenta" HorizontalAlignment="Left" VerticalAlignment="Top" Width="101" Height="20" Margin="822,189,0,0" Command="{Binding DodajPacijentaKomanda}"/>
+            <Button x:Name="ObrisiPacijentaUBolnicuDugme" Content="Obrisi pacijenta" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="20" Margin="928,189,0,0" Command="{Binding ObrisiPacijentaKomanda}"/>
 
-        <DataGrid x:Name="DataGridPacijenti" HorizontalAlignment="Left" Margin="528,232,0,0" VerticalAlignment="Top" Height="150" Width="500"
+            <DataGrid x:Name="DataGridPacijenti" HorizontalAlignment="Left" Margin="528,232,0,0" VerticalAlignment="Top" Height="150" Width="500"
                    AutoGenerateColumns="false" IsReadOnly="True"  HorizontalContentAlignment="Center" SelectedIndex="{Binding IdSelektovanogPacijenta}" 
                   ItemsSource="{Binding ListaPacijenataIzTabele}" SelectedItem="{Binding selektovaniPacijentIzTabele}">
-            <DataGrid.Columns>
-                <!--<DataGridTextColumn Binding="{Binding Path=Pacijent.IdPacijenta}" Header="Id pacijenta" />-->
-                <DataGridTextColumn Binding="{Binding Path=Ime}" Header="Ime" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Prezime}" Header="Prezime" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Jmbg}" Header="JMBG" Width="*"/>
-            </DataGrid.Columns>
-        </DataGrid>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=Ime}" Header="Ime" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Prezime}" Header="Prezime" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Jmbg}" Header="JMBG" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
 
-        <Button x:Name="OtkaziDugme" Content="Otkazi" HorizontalAlignment="Left" VerticalAlignment="Top" Width="117" Height="30" Margin="363,413,0,0" Command="{Binding OtkaziKomanda}"/>
-        <Button x:Name="DodajBolnicuDugme" Content="Dodaj bolnicu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="107" Height="29" Margin="565,414,0,0" Command="{Binding DodajBolnicuKomanda}"/>
-    </Grid>
+            <Button x:Name="OtkaziDugme" Content="Otkazi" HorizontalAlignment="Left" VerticalAlignment="Top" Width="117" Height="30" Margin="363,413,0,0" Command="{Binding OtkaziKomanda}"/>
+            <Button x:Name="DodajBolnicuDugme" Content="Potvrdi" HorizontalAlignment="Left" VerticalAlignment="Top" Width="107" Height="29" Margin="565,414,0,0" Command="{Binding DodajBolnicuKomanda}"/>
+        </Grid>
+    </Border>
 </Window>

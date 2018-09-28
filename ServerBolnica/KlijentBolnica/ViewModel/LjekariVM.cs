@@ -17,7 +17,6 @@ namespace KlijentBolnica.ViewModel
         public Ljekar selektovanLjekar { get; set; }
 
         public ICommand DodajLjekaraKom { get; set; }
-        public ICommand IzmijeniLjekaraKomanda { get; set; }
         public ICommand ObrisiLjekaraKomanda { get; set; }
         public ICommand OtkaziKomanda { get; set; }
 
@@ -27,7 +26,6 @@ namespace KlijentBolnica.ViewModel
             listaLjekara = new ObservableCollection<Ljekar>(listaLjekaraIzBaze);
 
             DodajLjekaraKom = new RelayCommand(DodajLjekara);
-            IzmijeniLjekaraKomanda = new RelayCommand(IzmijeniLjekara, SelektovanLjekar);
             ObrisiLjekaraKomanda = new RelayCommand(ObrisiLjekara, SelektovanLjekar);
             OtkaziKomanda = new KomandaOtkazi(this);
         }
@@ -77,11 +75,6 @@ namespace KlijentBolnica.ViewModel
         public bool SelektovanLjekar()
         {
             return selektovanLjekar != null;
-        }
-
-        public void IzmijeniLjekara()
-        {
-            SacuvajLjekara(selektovanLjekar);
         }
 
         public void ObrisiLjekara()

@@ -17,12 +17,9 @@ namespace KlijentBolnica.ViewModel
     {
         public ObservableCollection<Pacijent> listaPacijenata { get; set; }
 
-
         public Pacijent selektovanPacijent { get; set; }
         
-
         public ICommand DodajPacijentaKomanda { get; set; }
-        public ICommand IzmijeniPacijentaKomanda { get; set; }
         public ICommand ObrisiPacijentaKomanda { get; set; }
         public ICommand OtkaziKomanda { get; set; }
 
@@ -34,7 +31,6 @@ namespace KlijentBolnica.ViewModel
 
             DodajPacijentaKomanda = new RelayCommand(DodajPacijenta);
             ObrisiPacijentaKomanda = new RelayCommand(ObrisiPacijenta, SelektovanPacijent);
-            IzmijeniPacijentaKomanda = new RelayCommand(IzmijeniPacijenta, SelektovanPacijent);
             OtkaziKomanda = new KomandaOtkazi(this);
         }
 
@@ -51,15 +47,6 @@ namespace KlijentBolnica.ViewModel
             DodajPacijentaVM dodajPacijentaVM = new DodajPacijentaVM(pacijent.Ime, pacijent.Prezime, pacijent.Jmbg);
             DodajPacijenta dodajPacijenta = new DodajPacijenta(dodajPacijentaVM);
             dodajPacijenta.ShowDialog();
-
-            
-            //do
-            //{
-            //    NevalidanUnos unos = new NevalidanUnos();
-            //    unos.ShowDialog();
-            //    //dodajPacijenta.ShowDialog();
-            //}
-            //while (!ValidacijaPodataka(pacijent));
 
             if (dodajPacijentaVM.Sacuvano && ValidacijaPodataka(dodajPacijentaVM))
             {
@@ -92,12 +79,7 @@ namespace KlijentBolnica.ViewModel
         {
             return selektovanPacijent != null;
         }
-
-        public void IzmijeniPacijenta()
-        {
-            SacuvajPacijenta(selektovanPacijent);
-            
-        }
+       
 
         public void ObrisiPacijenta()
         {
@@ -124,8 +106,7 @@ namespace KlijentBolnica.ViewModel
             {
                 return false;
             }
-            //if("abc3def".Any(char.IsDigit))
-
+            
             return true ;
         }
     }

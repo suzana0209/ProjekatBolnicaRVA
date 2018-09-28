@@ -87,7 +87,6 @@
     <Compile Include="ViewModel\IzmijeniPodatkeKorisnikuVM.cs" />
     <Compile Include="ViewModel\LjekariVM.cs" />
     <Compile Include="ViewModel\LogovanjeVM.cs" />
-    <Compile Include="ViewModel\LogVM.cs" />
     <Compile Include="ViewModel\PacijentiVM.cs" />
     <Compile Include="View\Bolnice.xaml.cs">
       <DependentUpon>Bolnice.xaml</DependentUpon>
@@ -109,9 +108,6 @@
     </Compile>
     <Compile Include="View\Ljekari.xaml.cs">
       <DependentUpon>Ljekari.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Logger.xaml.cs">
-      <DependentUpon>Logger.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Logovanje.xaml.cs">
       <DependentUpon>Logovanje.xaml</DependentUpon>
@@ -162,10 +158,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Ljekari.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Logger.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -228,6 +220,9 @@
     <Resource Include="slike\Naslovna.jpg" />
     <Resource Include="slike\Redo.jpg" />
     <Resource Include="slike\Undo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="slike\grays.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

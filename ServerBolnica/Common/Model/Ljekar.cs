@@ -42,8 +42,7 @@ namespace Common.Model
             Prezime = prezime;
             Specijalizacija = specijalizacija;
             Titula = titula;
-
-            //BolnicaRadiLjekar = new List<Bolnica>();
+            
         }
 
         public Ljekar KlonirajLjekara()
@@ -58,12 +57,7 @@ namespace Common.Model
                 Titula = Titula
             };
 
-            //kopija.BolnicaRadiLjekar = new List<Bolnica>(BolnicaRadiLjekar.Count);
-            //foreach (var item in BolnicaRadiLjekar)
-            //{
-            //    kopija.BolnicaRadiLjekar.Add(item.KlonirajBolnicu());
-            //}
-
+           
             return kopija;
         }
     }

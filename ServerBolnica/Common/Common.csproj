@@ -71,7 +71,6 @@
     <Compile Include="ObjektiDTO\BolnicaIzmijeniDTO.cs" />
     <Compile Include="ObjektiDTO\BolnicaKreirajDTO.cs" />
     <Compile Include="ObjektiDTO\KorisnikDTO.cs" />
-    <Compile Include="ObjektiDTO\PomocniPacijent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

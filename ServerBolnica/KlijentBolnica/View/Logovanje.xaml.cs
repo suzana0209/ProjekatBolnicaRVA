@@ -24,9 +24,8 @@ namespace KlijentBolnica.View
         LogovanjeVM viewModel;
         public Logovanje()
         {
-            object justToInit = LogVM.Instance;
-
-            //LozinkaTextBox.u
+           
+            
             InitializeComponent();
             IProzorManager windowManager = new ProzorManager(this);
 

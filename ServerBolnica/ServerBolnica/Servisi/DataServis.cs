@@ -41,9 +41,6 @@ namespace ServerBolnica.Servisi
                 Console.WriteLine("Error: " + ex.Detail.Poruka);
                 return null;
             }
-
-           
-            //throw new NotImplementedException();
         }
 
         public bool IzmijeniBolnicu(Sesija sesija, BolnicaIzmijeniDTO bolnicaIzmijeniDTO)
@@ -92,7 +89,6 @@ namespace ServerBolnica.Servisi
                         };
 
                         izmijenjenaBolnica.LjekariUBolnici.Add(ljekar);
-                        //DbManager.Instance.DodajLjekaraUBolnicu(izmijenjenaBolnica.IdBolnice, ljekar);
                     }
                 }
 
@@ -112,10 +108,7 @@ namespace ServerBolnica.Servisi
                         };
 
                         izmijenjenaBolnica.PacijentiUBolnici.Add(pacijent);
-                        //DbManager.Instance.DodajPacijentaUBolnicu(izmijenjenaBolnica.IdBolnice, pacijent);
                         DbManager.Instance.SacuvajPromjene();
-                        //Bolnica ba = DbManager.Instance.VratiBolnicu(izmijenjenaBolnica.IdBolnice);
-
                     }
                 }
 

@@ -5,17 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KlijentBolnica.View"
         mc:Ignorable="d"
-        Title="" Height="381" Width="504.953" ResizeMode="NoResize" WindowStyle="None">
-    <Grid>
-        <Label Content="LISTA PACIJENATA" FontSize="30" HorizontalAlignment="Left" Margin="133,39,0,0" VerticalAlignment="Top"/>
+        Title="" Height="342" Width="504.953" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="WindowFrameBrush" StartPoint="0,0.5" EndPoint="1,0.5">
+            <GradientStop Color="CadetBlue" Offset="0.4"/>
+            <GradientStop Color="Gray" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Resources>
+    <Border Background="#50FFFFFF" CornerRadius="5" BorderBrush="{StaticResource WindowFrameBrush}" BorderThickness="3,0,3,3">
 
-        <Button Name="DodajPacijentaDugme" Content="Dodaj pacijenta" HorizontalAlignment="Left" Margin="0,148,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding DodajPacijentaKomanda}"/>
-        <Button Name="IzmijeniPacijentaDugme" Content="Izmijeni pacijenta" HorizontalAlignment="Left" Margin="0,209,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding IzmijeniPacijentaKomanda}"/>
-        <Button Name="ObrisiPacijentaDugme" Content="Obrisi pacijenta" HorizontalAlignment="Left" Margin="0,262,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding ObrisiPacijentaKomanda}"/>
+        <Grid>
+        <Label Content="LISTA PACIJENATA" FontSize="30" HorizontalAlignment="Left" Margin="132,0,0,0" VerticalAlignment="Top"/>
+
+        <Button Name="DodajPacijentaDugme" Content="Dodaj pacijenta" HorizontalAlignment="Left" Margin="68,68,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding DodajPacijentaKomanda}"/>
+        <Button Name="ObrisiPacijentaDugme" Content="Obrisi pacijenta" HorizontalAlignment="Left" Margin="328,68,0,0" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding ObrisiPacijentaKomanda}"/>
         <Button Name="NazadDugme" Content="Nazad" HorizontalAlignment="Left" VerticalAlignment="Top" Width="105" Height="34" Command="{Binding OtkaziKomanda}"/>
 
-        <DataGrid x:Name="dataGrid" Margin="148,118,0,0" ItemsSource="{Binding listaPacijenata}" AutoGenerateColumns="false" Height="223" 
-                  VerticalAlignment="Top" HorizontalAlignment="Left" Width="357" IsReadOnly="True" SelectedItem="{Binding selektovanPacijent}">
+        <DataGrid x:Name="dataGrid" Margin="0,118,0,0" ItemsSource="{Binding listaPacijenata}" AutoGenerateColumns="false" Height="223" 
+                  VerticalAlignment="Top" HorizontalAlignment="Left" Width="505" IsReadOnly="True" SelectedItem="{Binding selektovanPacijent}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=IdPacijenta}" Header="Id" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Path=Ime}" Header="Ime" Width="2*"/>
@@ -24,4 +31,5 @@
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
+</Border>
 </Window>

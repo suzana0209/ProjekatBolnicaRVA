@@ -16,10 +16,7 @@ namespace KlijentBolnica.ViewModel
     {
         public string Ime { get; set; }
         public string Prezime { get; set; }
-        //public Specijalizacija Specijalizacija { get; set; }
-        //public Titula Titula { get; set; }
-        //public Odjeljenje Odjeljenje { get; set; }
-
+        
         public IEnumerable<Specijalizacija> VrstaSpecijalizacije
         {
             get
@@ -84,13 +81,10 @@ namespace KlijentBolnica.ViewModel
                     Titula.ToString() != null && Titula.ToString().Length > 0 &&
                     Odjeljenje.ToString() != null && Odjeljenje.ToString().Length > 0;
         }
-
         public void LjekarDodat()
         {
             Sacuvano = true;
             Roditelj.Close();
-        }
-
-       
+        }      
     }
 }

@@ -35,8 +35,6 @@ namespace KlijentBolnica.ViewModel
             }
         }
 
-        //public event PropertyChangedEventHandler PropertyChanged;
-
         public LogovanjeVM(IProzorManager prozorManager) : base(prozorManager)
         {
             LogovanjeKomanda = this;
@@ -49,7 +47,6 @@ namespace KlijentBolnica.ViewModel
         }
 
         
-
         public bool CanExecute(object parameter)
         {
             return true;

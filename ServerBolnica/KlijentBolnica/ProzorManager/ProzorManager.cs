@@ -56,7 +56,6 @@ namespace KlijentBolnica.WindowManager
         {
             stek.Pop().Closed -= TopWindowClosed;
             stek.Peek().Show();
-            //throw new NotImplementedException();
         }
 
         public void PrethodnaStrana()

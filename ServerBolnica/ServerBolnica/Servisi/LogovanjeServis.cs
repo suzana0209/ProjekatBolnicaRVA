@@ -19,22 +19,11 @@ namespace ServerBolnica.Servisi
 
         public bool PostojiUBaziKorisnik(KorisnikZaLogovanje korisnik)
         {
-            //try
-            //{
-                //DbManager.Instance.vr
-                if (SesijaManager.Instance.PostojiUBazi(korisnik))
-                    return true;
-                else
-                    return false;
-            //}
-            //catch (FaultException<Izuzetak> ex)
-            //{
-            //    Console.WriteLine("Greska: " + ex.Detail.Poruka);
-            //    return false;
-            //}
-
-
-
+            
+            if (SesijaManager.Instance.PostojiUBazi(korisnik))
+                return true;
+            else
+                return false;
         }
 
         public Sesija PrijaviSe(KorisnikZaLogovanje korisnik)
@@ -48,8 +37,6 @@ namespace ServerBolnica.Servisi
                     ex.Poruka = "Pogresno korisnicko ime i/ili lozinka.";
                     Console.WriteLine("Greska: " + ex.Poruka);
                     return null;
-
-                    //NotImplementedException();
                 }
                 else
                 {
@@ -62,36 +49,7 @@ namespace ServerBolnica.Servisi
             {
                 log.Warn("Greska pri logovanju" + logovaniKorisnik.KorisnickoIme);               
                 return null;
-            }
-
-            //Korisnik logovaniKorisnik = DbManager.Instance.GetUserByUsername(korisnik.KorisnickoIme);
-            //if (logovaniKorisnik != null && logovaniKorisnik.Lozinka == korisnik.Lozinka)
-            //{
-                
-            //    throw new FaultException<Izuzetak>(ex);
-
-            //    //throw new FaultException<Izuzetak>(new Izuzetak(""));
-            //}
-
-            
-
-            //Korisnik logovaniKorisnik = DbManager.Instance.GetUserByUsername(korisnik.KorisnickoIme);
-            //if (logovaniKorisnik == null || logovaniKorisnik.Lozinka != korisnik.Lozinka)
-            //{
-            //    log.Warn("Greska pri logovanju" + logovaniKorisnik.KorisnickoIme);
-
-            //    Izuzetak ex = new Izuzetak();
-            //    ex.Poruka = "Pogresno korisnicko ime i/ili lozinka.";
-            //    throw new FaultException<Izuzetak>(ex);
-
-            //    //throw new FaultException<Izuzetak>(new Izuzetak(""));
-            //}
-
-            //log.Info("Korsnik uspjesno ulogovan: " + logovaniKorisnik.KorisnickoIme);
-            //return SesijaManager.Instance.NapraviNovuSesiju(logovaniKorisnik);
-            //throw new NotImplementedException();
-
-
+            }           
         }
     }
 }

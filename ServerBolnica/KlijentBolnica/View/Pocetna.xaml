@@ -5,23 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KlijentBolnica.View"
         mc:Ignorable="d"
-        Title="" Height="334" Width="638" ResizeMode="NoResize" WindowStyle="None" Background="White">
-    <Grid>
-        <!--<Grid.Background>
-            <ImageBrush ImageSource="/slike/Naslovna.jpg" Stretch="UniformToFill"/>
-        </Grid.Background>-->
+        Title="" Height="203" Width="405" ResizeMode="NoResize" AllowsTransparency="True" WindowStyle="None" Background="White">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="WindowFrameBrush" StartPoint="0,0.5" EndPoint="1,0.5">
+            <GradientStop Color="CadetBlue" Offset="0.4"/>
+            <GradientStop Color="Gray" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Resources>
+    <Border Background="#50FFFFFF" CornerRadius="5" BorderBrush="{StaticResource WindowFrameBrush}" BorderThickness="3,0,3,3">
+        <Grid>
+            <Label Content="Dobrodosli, trenutno ulogovan" FontSize="15" HorizontalAlignment="Left" Margin="28,0,0,0" VerticalAlignment="Top" Width="218" Height="34"/>
 
-        <Button Name="OdjavaDugme" Content="Odjavite se" HorizontalAlignment="Left" Margin="542,16,0,0" VerticalAlignment="Top" Width="87" Height="34" Click="OdjavaDugme_Click"/>
-        <Button Name="IzmijeniPodatkeDugme" Content="{Binding ImePrezime}" HorizontalAlignment="Left" Margin="97,10,0,0" VerticalAlignment="Top" Width="118" Height="34" Click="IzmijeniPodatkeDugme_Click"/>
-        <Button Name="PocetnaStranaDugme" Content="Pocetna" HorizontalAlignment="Left" Margin="3,10,0,0" VerticalAlignment="Top" Width="87" Height="34" />
-        <Button Name="DodajKorisnikaDugme" Content="DodajKorisnika" HorizontalAlignment="Left" Margin="437,16,0,0" VerticalAlignment="Top" Width="87" Height="34" Click="DodajKorisnikaDugme_Click" Visibility="{Binding DugmeDodajKorisnikaVidljivo}"/>
+            <Button Name="OdjavaDugme" Content="Odjavite se" HorizontalAlignment="Left" Margin="99,152,0,0" VerticalAlignment="Top" Width="105" Height="34" Click="OdjavaDugme_Click"/>
+            <Button Name="IzmijeniPodatkeDugme" Content="{Binding ImePrezime}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="118" Height="34" Click="IzmijeniPodatkeDugme_Click" Margin="286,0,0,0"/>
+            <Button Name="DodajKorisnikaDugme" Content="DodajKorisnika" HorizontalAlignment="Left" Margin="286,39,0,0" VerticalAlignment="Top" Width="113" Height="34" Click="DodajKorisnikaDugme_Click" Visibility="{Binding DugmeDodajKorisnikaVidljivo}"/>
 
-        <Rectangle HorizontalAlignment="Stretch" Fill="Gray" Height="1" Margin="-10,55,10,360"/>
-        <Button Name="PrikaziLjekareDugme" Content="Ljekari" HorizontalAlignment="Left" Margin="259,85,0,0" VerticalAlignment="Top" Width="105" Height="34" Click="PrikaziLjekareDugme_Click"/>
-        <Button Name="PrikaziPacijenteDugme" Content="Pacijenti" HorizontalAlignment="Left" Margin="524,85,0,0" VerticalAlignment="Top" Width="105" Height="34" Click="PrikaziPacijenteDugme_Click"/>
-        <Button x:Name="BolniceDugme" Content="Bolnice" HorizontalAlignment="Left" Margin="0,85,0,0" VerticalAlignment="Top" Width="105" Height="34" Click="BolniceDugme_Click"/>
-
-        <Button x:Name="LogoviDugme" Content="Logovi" HorizontalAlignment="Left" Margin="15,189,0,0" VerticalAlignment="Top" Width="75" Click="LogoviDugme_Click"/>
-
-    </Grid>
+            <Button Name="PrikaziLjekareDugme" Content="Ljekari" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" Width="105" Height="34" Click="PrikaziLjekareDugme_Click" RenderTransformOrigin="-0.171,-0.294"/>
+            <Button Name="PrikaziPacijenteDugme" Content="Pacijenti" HorizontalAlignment="Left" Margin="177,93,0,0" VerticalAlignment="Top" Width="105" Height="34" Click="PrikaziPacijenteDugme_Click"/>
+            <Button x:Name="BolniceDugme" Content="Bolnice" HorizontalAlignment="Left" Margin="99,39,0,0" VerticalAlignment="Top" Width="105" Height="34" Click="BolniceDugme_Click" RenderTransformOrigin="0.362,1.735"/>
+        </Grid>
+    </Border>
 </Window>

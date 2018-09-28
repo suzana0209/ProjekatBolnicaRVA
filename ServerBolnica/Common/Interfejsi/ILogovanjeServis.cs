@@ -11,7 +11,6 @@ namespace Common.Interfejsi
         Sesija PrijaviSe(KorisnikZaLogovanje korisnik);
 
         [OperationContract]
-        //[FaultContract(typeof(Izuzetak))]
         bool PostojiUBaziKorisnik(KorisnikZaLogovanje korisnik);
 
         [OperationContract]
