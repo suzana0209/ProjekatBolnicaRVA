@@ -81,7 +81,6 @@ namespace KlijentBolnica.ViewModel
             ObrisiLjekaraKomanda = new RelayCommand(ObrisiLjekara, SelektovanLjekar);
             DodajPacijentaKomanda = new RelayCommand(DodajPacijenta);
             ObrisiPacijentaKomanda = new RelayCommand(ObrisiPacijenta, SelektovanPacijent);
-
             DodajBolnicuKomanda = new RelayCommand(SacuvajBolnicu, ValidacijaSacuvajBolnicu);
 
             UndoKomanda = new RelayCommand(commandExecutor.Undo, commandExecutor.ValidacijaUndo);
